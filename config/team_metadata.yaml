@@ -1,0 +1,9 @@
+# Metadatos editoriales del repositorio. No alteran ninguna fórmula EFOS.
+# Clave: Liga|Temporada|Equipo
+# El nombre del DT se muestra solo cuando se documenta aquí; EFOS no lo infiere
+# de patrones tácticos ni lo adivina desde los eventos.
+equipos:
+  "Liga MX|2025-2026|América":
+    coach: "André Jardine"
+    coach_source: "Club América, comunicado oficial del 3 de junio de 2026: cierre de su etapa tras dirigir la temporada 2025-26. https://www.clubamerica.com.mx/noticias/andre-jardine-concluye-etapa-exitosa-con-el-club-america"
+    competition_note: "Liga MX 2025-2026"

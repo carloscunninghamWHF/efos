@@ -1,0 +1,30 @@
+# EFOS v0.4 parameters.
+pitch:
+  length_m: 120.0
+  width_m: 80.0
+  source_coordinate_system: "statsbomb"
+
+normalization:
+  method: "minmax"
+  clip_out_of_bounds: true
+
+synthetic_data:
+  n_matches: 1
+  n_events_per_match: 400
+  teams: ["Team A", "Team B"]
+  random_seed: 42
+  include_360: true
+  include_pip_one: true
+  pip_one_event_rate: 0.08
+
+missing_data:
+  numeric_fill_strategy: "leave_null"
+  drop_event_if_missing: ["event_type", "team", "timestamp"]
+
+logging:
+  level: "INFO"
+
+pressure_engine:
+  source_priority: ["TRACK", "360", "EVENT"]
+  event_proxy_label: "EVENT_PROXY"
+  snapshot_360_label: "360_SNAPSHOT"

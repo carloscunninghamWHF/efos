@@ -1,0 +1,228 @@
+{
+  "version": "TACTICAL_FRAMEWORK_v1",
+  "team": "América",
+  "matches": 38,
+  "data_quality": {
+    "rows_before": 124353,
+    "rows_after": 124353,
+    "duplicates_removed": 0,
+    "dedupe_key": "event_id"
+  },
+  "defensive_profile": {
+    "defensive_action_height": {
+      "value": 55.594,
+      "count": null,
+      "rate": null,
+      "per_match": null,
+      "unit": "StatsBomb x (0–120)",
+      "source": "EVENT",
+      "confidence": "HIGH",
+      "limitation": "Altura media de las acciones defensivas; no equivale a la altura geométrica de la línea defensiva sin tracking/360 completo.",
+      "denominator": 8420,
+      "coverage": 1.0,
+      "band": "Intervención defensiva media-alta",
+      "actions": 8420
+    },
+    "counterpress": {
+      "value": null,
+      "count": 1603,
+      "rate": 0.198,
+      "per_match": 42.184,
+      "unit": null,
+      "source": "EVENT",
+      "confidence": "HIGH",
+      "limitation": "StatsBomb marca counterpress en acciones defensivas dentro de 5s de una pérdida en juego abierto; mide acciones, no la calidad del counterpress.",
+      "denominator": 8093,
+      "coverage": null
+    },
+    "opponent_offside_outcomes": {
+      "value": null,
+      "count": 40,
+      "rate": 0.003,
+      "per_match": 1.053,
+      "unit": null,
+      "source": "EVENT_PROXY",
+      "confidence": "MEDIUM",
+      "limitation": "Cuenta pases del rival terminados en offside. Es compatible con una línea/trampa de fuera de juego, pero no prueba que el equipo la haya provocado deliberadamente.",
+      "denominator": 15559,
+      "coverage": null
+    },
+    "opponent_passes_under_pressure": {
+      "value": null,
+      "count": 2798,
+      "rate": 0.18,
+      "per_match": 73.632,
+      "unit": null,
+      "source": "EVENT",
+      "confidence": "HIGH",
+      "limitation": "Acciones de pase rivales etiquetadas under_pressure; no identifica por sí sola el mecanismo colectivo de presión.",
+      "denominator": 15559,
+      "coverage": null
+    },
+    "high_press_share": {
+      "value": null,
+      "count": 1521,
+      "rate": 0.271,
+      "per_match": 40.026,
+      "unit": null,
+      "source": "EVENT",
+      "confidence": "HIGH",
+      "limitation": "Share de Pressure events con x≥80; describe localización de presión, no altura de bloque en cada frame.",
+      "denominator": 5609,
+      "coverage": null
+    }
+  },
+  "construction_progression": {
+    "possession_directness": {
+      "value": 0.505,
+      "count": null,
+      "rate": null,
+      "per_match": null,
+      "unit": "StatsBomb possession_directness",
+      "source": "EVENT",
+      "confidence": "HIGH",
+      "limitation": "Media de la variable disponible en el proveedor; debe interpretarse con la definición de StatsBomb del dataset cargado.",
+      "denominator": 59768,
+      "coverage": 0.874
+    },
+    "pressure_attraction_passes": {
+      "value": null,
+      "count": 1692,
+      "rate": 0.134,
+      "per_match": 44.526,
+      "unit": null,
+      "source": "EVENT_PROXY",
+      "confidence": "MEDIUM",
+      "limitation": "Proxy 'fishing': pase completado bajo presión antes de x=80. No demuestra intención deliberada de atraer rivales.",
+      "denominator": 12662,
+      "coverage": null
+    },
+    "pressure_release_success": {
+      "value": null,
+      "count": 769,
+      "rate": 0.454,
+      "per_match": 20.237,
+      "unit": null,
+      "source": "SEQUENCE_PROXY",
+      "confidence": "MEDIUM",
+      "limitation": "Tras un pase de atracción, busca progresión en los siguientes eventos de la misma posesión; asociación secuencial, no causalidad.",
+      "denominator": 1692,
+      "coverage": null
+    },
+    "halfspace_entries": {
+      "value": null,
+      "count": 1406,
+      "rate": 0.083,
+      "per_match": 37.0,
+      "unit": null,
+      "source": "EVENT_PROXY",
+      "confidence": "MEDIUM",
+      "limitation": "Pases completados a dos zonas predefinidas de half-space; la geometría es una hipótesis configurable del modelo.",
+      "denominator": 16921,
+      "coverage": null
+    },
+    "third_man_progression_proxy": {
+      "value": null,
+      "count": 354,
+      "rate": 0.021,
+      "per_match": 9.316,
+      "unit": null,
+      "source": "SEQUENCE_PROXY",
+      "confidence": "MEDIUM",
+      "limitation": "Detecta cadenas A→B→C progresivas con tres jugadores distintos. No observa movimientos sin balón ni confirma el principio táctico de tercer hombre.",
+      "denominator": 16921,
+      "coverage": null
+    }
+  },
+  "offensive_microconcepts": {
+    "cross_to_danger_zone_proxy": {
+      "value": null,
+      "count": 641,
+      "rate": 0.317,
+      "per_match": 16.868,
+      "unit": null,
+      "source": "EVENT_PROXY",
+      "confidence": "LOW",
+      "limitation": "Proxy del concepto 'Aliup': identifica geometría de centro hacia zona peligrosa, pero no rosca, pierna cambiada, segundo palo real ni intención del receptor.",
+      "denominator": 641,
+      "coverage": null
+    },
+    "interval_entries": {
+      "value": null,
+      "count": 776,
+      "rate": 0.046,
+      "per_match": 20.421,
+      "unit": null,
+      "source": "EVENT_PROXY",
+      "confidence": "MEDIUM",
+      "limitation": "Pases completados hacia el intervalo central-lateral aproximado por half-spaces; no observa desmarques sin balón.",
+      "denominator": 16921,
+      "coverage": null
+    }
+  },
+  "value_purpose": {
+    "xg": {
+      "total": 52.68,
+      "per_match": 1.386,
+      "per_shot": 0.094,
+      "shots": 563,
+      "coverage": 1.0,
+      "source": "EVENT_MODEL",
+      "confidence": "HIGH",
+      "limitation": "xG evalúa la probabilidad del remate, no la calidad de toda la posesión previa."
+    },
+    "obv": {
+      "total_net": 57.487,
+      "per_match": 1.513,
+      "per_100_team_events": 0.084,
+      "coverage": 0.585,
+      "source": "EVENT_MODEL",
+      "confidence": "HIGH",
+      "limitation": "OBV mide cambio de valor esperado asociado a acciones elegibles; no equivale por sí solo a intención táctica."
+    }
+  },
+  "weekly_planning_hypotheses": [
+    {
+      "day": "Lunes",
+      "theme": "Corrección / salida bajo presión",
+      "focus": "Revisar secuencias de atracción de presión y salida posterior; priorizar apoyos y tercer hombre.",
+      "evidence": "pressure_release_success",
+      "requires_opponent_data": false
+    },
+    {
+      "day": "Martes",
+      "theme": "Principios defensivos",
+      "focus": "Coordinar distancias de presión, cobertura y reorganización del bloque tras pérdida.",
+      "evidence": "counterpress/high_press",
+      "requires_opponent_data": false
+    },
+    {
+      "day": "Miércoles",
+      "theme": "Plan contra rival",
+      "focus": "Definir altura y gatillos de presión frente a la salida específica del próximo rival.",
+      "evidence": "offside_proxy=1.05/partido; high_press_share=0.27",
+      "requires_opponent_data": true
+    },
+    {
+      "day": "Jueves",
+      "theme": "Plan ofensivo contra rival",
+      "focus": "Consolidar ataques de intervalo y variantes de centro a zona peligrosa; ajustar al comportamiento defensivo del rival.",
+      "evidence": "interval_entries / halfspace_entries / cross_to_danger_zone_proxy",
+      "requires_opponent_data": true
+    },
+    {
+      "day": "Viernes",
+      "theme": "Balón parado y escenarios",
+      "focus": "Revisar balón parado y escenarios de partido usando xG/OBV como evidencia de valor, sin prescribir carga física desde EFOS.",
+      "evidence": "xG / OBV / play patterns",
+      "requires_opponent_data": false
+    }
+  ],
+  "terminology": {
+    "fishing": "Proxy de atracción de presión: pase completado bajo presión antes del último tercio, con evaluación adicional de liberación/progresión posterior.",
+    "third_man": "Proxy secuencial A→B→C con tres jugadores distintos y ganancia territorial; no observa el movimiento sin balón.",
+    "aliup": "Etiqueta conceptual de video; EFOS sólo observa un proxy geométrico de centro hacia zona peligrosa.",
+    "offside_trap": "EFOS observa outcomes de offside del rival; atribuirlos a una trampa deliberada requiere validación de video/360."
+  },
+  "methodological_guardrail": "Cada concepto se reporta como observación o proxy según la información realmente disponible. Un proxy no prueba por sí solo intención del entrenador."
+}

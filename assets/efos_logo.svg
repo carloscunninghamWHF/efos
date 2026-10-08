@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" fill="none">
+  <rect width="720" height="360" rx="28" fill="#F8F8F8"/>
+  <g opacity="0.98">
+    <circle cx="212" cy="140" r="64" fill="#E9E8E6"/>
+    <circle cx="272" cy="140" r="64" fill="#D8D8D9" fill-opacity="0.8"/>
+    <circle cx="332" cy="140" r="64" fill="#B6BAC0" fill-opacity="0.75"/>
+    <circle cx="392" cy="140" r="64" fill="#717985" fill-opacity="0.78"/>
+    <circle cx="452" cy="140" r="64" fill="#111823" fill-opacity="0.92"/>
+    <circle cx="512" cy="140" r="64" fill="#D0A140"/>
+  </g>
+  <g fill="#0B1220" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="300" letter-spacing="34">
+    <text x="238" y="270">EFOS</text>
+  </g>
+</svg>

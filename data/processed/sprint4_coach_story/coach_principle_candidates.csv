@@ -1,0 +1,8 @@
+principle,value_pct,matches,confidence,evidence_n,source
+Ball retention under high constraint,95.3998395292859,38,97.69140124606706,11217,EVENT_PROXY
+Defensive trap execution,91.17259552042161,38,94.7806615738379,1518,TRAP_ENGINE
+Immediate response after possession loss,45.535714285714285,38,75.2312301297737,2912,TRANSITION_ENGINE
+Boundary use within high-constraint actions,30.534426553393264,38,69.7875862346639,10123,EVENT_PROXY
+High-block pressure,27.010162239258335,38,68.10267755667749,5609,EVENT
+Direct pressure on opponent actions,21.268156724017796,38,67.23760301617622,55971,EVENT_PROXY
+Direct deep progression from X<40 to X>80,3.960202887241514,38,60.64945695136852,5126,EVENT

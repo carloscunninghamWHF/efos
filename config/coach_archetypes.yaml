@@ -1,0 +1,45 @@
+# EFOS — Perfiles de entrenador (arquetipos de estilo)
+#
+# Cada perfil describe el estilo de juego que ese tipo de entrenador suele
+# imponer, en la misma escala que el perfil del equipo:
+#   0-100, donde 50 = el rival promedio que enfrentó el equipo analizado.
+#   80 = claramente por encima de sus rivales · 20 = claramente por debajo.
+#
+# Ejes de estilo (se calculan en coach_story/coach_fit.py):
+#   posesion       -> cuánto tiene el balón (% de los pases del partido)
+#   presion_alta   -> dónde presiona (% de sus presiones en campo rival)
+#   contrapresion  -> si reacciona presionando justo tras perder el balón
+#   juego_directo  -> cuánto usa el pase largo (% de pases de 30 m o más)
+#
+# Los valores son hipótesis de diseño, fijadas antes de mirar los datos.
+# Los "ejemplos" son referencias ilustrativas del estilo, no candidatos
+# evaluados ni una afirmación sobre su disponibilidad. Edítelos libremente.
+
+arquetipos:
+  dominio_posesion:
+    nombre: "Dominio con balón"
+    resumen: "Quiere el balón, lo mueve con paciencia y presiona arriba para recuperarlo pronto."
+    ejemplos: ["Pep Guardiola", "Mikel Arteta"]
+    perfil: {posesion: 80, presion_alta: 70, contrapresion: 65, juego_directo: 30}
+
+  presion_transicion:
+    nombre: "Presión intensa y transición"
+    resumen: "Presiona muy arriba, recupera y ataca rápido y en vertical antes de que el rival se ordene."
+    ejemplos: ["Jürgen Klopp", "Marcelo Bielsa"]
+    perfil: {posesion: 60, presion_alta: 80, contrapresion: 80, juego_directo: 65}
+
+  equilibrio:
+    nombre: "Equilibrio y bloque medio"
+    resumen: "Se adapta al rival: ni domina ni renuncia al balón; prioriza el orden y la gestión del partido."
+    ejemplos: ["Carlo Ancelotti", "Didier Deschamps"]
+    perfil: {posesion: 50, presion_alta: 50, contrapresion: 50, juego_directo: 50}
+
+  bloque_bajo:
+    nombre: "Bloque bajo y contragolpe"
+    resumen: "Cede el balón, defiende cerca de su área y golpea al espacio con pocos pases."
+    ejemplos: ["Diego Simeone", "José Mourinho"]
+    perfil: {posesion: 25, presion_alta: 25, contrapresion: 35, juego_directo: 70}
+
+# Si los dos primeros perfiles quedan a menos de esta distancia (puntos de
+# encaje), la historia lo presenta como empate técnico en vez de un ganador.
+margen_empate: 5

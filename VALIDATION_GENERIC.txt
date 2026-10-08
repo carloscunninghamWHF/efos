@@ -1,0 +1,29 @@
+EFOS v0.4 Sprint 4 — Team-Agnostic Validation
+Date: 2026-09-28
+
+Validation status: PASS
+Automated tests: 47/47 passed
+
+Generic invariants verified:
+1. Team selection can be explicit or auto-detected from match coverage.
+2. No 38-match assumption in Sprint 4; expected_matches is optional validation only.
+3. EFOS Normalized/flat CSV and StatsBomb Wide CSV are auto-detected.
+4. Common flat aliases x/y, end_x/end_y, id/idx/type are adapted.
+5. Renaming Team A / Team B to unrelated club names leaves ESI, dimensions,
+   HPS action count and Trap metrics numerically invariant when data are unchanged.
+6. Coach Story output contract is identical across team names.
+7. Multi-team mode (--all-teams) runs the same pipeline per club into separate folders.
+8. Unsupported/ambiguous inputs fail explicitly rather than selecting a club silently.
+
+Real-data smoke test:
+- Input: data/processed/america_events.csv
+- Team argument: auto
+- Auto selection: America via full match coverage
+- Input format: EFOS_NORMALIZED
+- ESI: 72.01
+- 38-match Coach Story output generated successfully.
+
+Independent flat-CSV smoke test:
+- Input: data/raw/csv_demo/events.csv
+- Team: Team A
+- Same output contract generated successfully.

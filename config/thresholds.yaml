@@ -1,0 +1,110 @@
+# EFOS v0.4 — hypotheses, configurable and auditable.
+system_states:
+  esi_bands:
+    stability:   { min: 80, max: 100 }
+    adaptation:  { min: 65, max: 79.999 }
+    tension:     { min: 50, max: 64.999 }
+    fragility:   { min: 30, max: 49.999 }
+    collapse:    { min: 0,  max: 29.999 }
+  trajectory_window_events: 5
+  volatility_std_alert: 8.0
+  deterioration_drop_alert: 10.0
+
+dtc:
+  stability_esi_min: 70.0
+  stability_der_min: 60.0
+  adaptation_esi_min: 55.0
+  tension_esi_min: 40.0
+  tension_hps_min: 50.0
+  fragility_esi_min: 25.0
+
+dynamic_equilibrium_response:
+  recovery_line_distance_m: 15.0
+  max_recovery_window_seconds: 25
+
+behavior_engine:
+  temporal_context_window_n: 5
+
+pip_one_merge:
+  timestamp_tolerance_seconds: 3.0
+
+pattern_discovery:
+  kmeans_k_range: [2, 8]
+  gmm_components_range: [2, 8]
+
+alerts:
+  fragility_esi_drop_window_events: 5
+  fragility_esi_drop_threshold: 10.0
+
+sprint2:
+  zones:
+    build_up_max_x: 36.0
+    progression_start_max_x: 40.0
+    final_third_min_x: 80.0
+  transition:
+    response_window_seconds: 5.0
+  contextual_window_n: 5
+  data_integrity:
+    expected_matches_hackathon: 38
+
+pressure_engine:
+  event_pressure:
+    pressure_event_window_seconds: 2.0
+  boundary:
+    high_constraint_distance_to_touchline: 8.0
+  hps:
+    pressure_weight_lambda: 0.50
+    high_pressure_threshold: 0.60
+    obv_logistic_scale: 10.0
+  traps:
+    observation_window_seconds: 8.0
+    min_pressure_context: 0.60
+    min_constraint_delta: 0.15
+    min_funnel_delta: 3.0
+    long_pass_m: 30.0
+  lane_closure:
+    enabled: true
+    defender_distance_sigma: 3.0
+    closed_threshold: 0.55
+  tracking:
+    enabled: false
+    active_press_speed_mps: 2.0
+    intercept_horizon_seconds: 1.5
+
+coach_story:
+  relative_delta_tolerance: 2.0
+  confidence:
+    high_n: 1000
+    medium_n: 100
+    principle_high_score: 75.0
+    principle_medium_score: 50.0
+
+tactical_framework:
+  # StatsBomb event-space hypotheses. All thresholds are auditable/configurable.
+  defensive_height_mid_x: 50.0
+  defensive_height_high_x: 70.0
+  high_press_x: 80.0
+  pressure_attraction_max_x: 80.0
+  pressure_release_next_events: 3
+  pressure_release_seconds: 8.0
+  pressure_release_min_x_gain: 10.0
+  final_third_x: 80.0
+  third_man_max_seconds: 4.0
+  third_man_min_x_gain: 15.0
+  third_man_second_pass_min_x_gain: 8.0
+  halfspace_x_min: 70.0
+  halfspace_x_max: 95.0
+  halfspace_y1_min: 18.0
+  halfspace_y1_max: 30.0
+  halfspace_y2_min: 50.0
+  halfspace_y2_max: 62.0
+  cross_target_x_min: 102.0
+  cross_target_y_min: 18.0
+  cross_target_y_max: 62.0
+  interval_start_x: 60.0
+  interval_end_x: 88.0
+  planning_pressure_release_rate: 0.55
+  planning_third_man_per_match: 1.5
+  planning_interval_per_match: 3.0
+  planning_counterpress_share_high: 0.18
+  planning_high_press_share_high: 0.35

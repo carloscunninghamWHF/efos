@@ -1,0 +1,10 @@
+EFOS v0.4 Sprint 4 validation
+dataset_events= 124353
+matches= 38
+tests=39 passed
+ESI= 72.015
+dimensions= {'OC': 56.53, 'HPS': 70.042, 'RPS': 94.53, 'DS': 83.957, 'DER': 61.873}
+HPS_meta= {'retention': 0.9215, 'progression': 0.5434, 'value_preservation': 0.5022, 'decision_stability': 0.6135, 'n_actions': 59824, 'mean_pci': 0.3502}
+trap_metrics= {'trap_attempts': 1518, 'successful_traps': 1384, 'DTE': 91.17259552042161, 'trap_rate': 21.611617312072894}
+frames360_loaded= 0
+method_guardrail=TTI/reachability remain null without tracking; 360 only enriches valid snapshot events.

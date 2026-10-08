@@ -1,0 +1,35 @@
+# EFOS v0.4 — hypotheses, configurable and auditable.
+esi_weights:
+  organizational_cohesion: 0.25
+  high_pressure_stability: 0.20
+  risk_processing_stability: 0.20
+  decision_stability: 0.15
+  dynamic_equilibrium_response: 0.20
+
+pressure_context_weights:
+  direct_pressure: 0.35
+  nearby_pressure: 0.25
+  boundary_constraint: 0.15
+  defensive_responsibility: 0.15
+  control_constraint: 0.10
+
+hps_weights:
+  retention: 0.40
+  progression: 0.20
+  value_preservation: 0.20
+  decision_stability: 0.20
+
+coach_tactical_signature_weights:
+  construction: 1.0
+  progression: 1.0
+  attack: 1.0
+  defense: 1.0
+  transition: 1.0
+  adaptation: 1.0
+  trap_efficiency: 1.0
+  pressure_resistance: 1.0
+
+principle_confidence_weights:
+  frequency: 0.40
+  consistency: 0.35
+  coverage: 0.25

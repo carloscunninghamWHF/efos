@@ -1,0 +1,1769 @@
+{
+  "team": "América",
+  "title": "EFOS Coach Story — América",
+  "method": "Data -> Metrics -> Interpretation -> Evidence -> Coach Story",
+  "executive_summary": {
+    "narrative": "En la muestra analizada, América se define principalmente por respuesta ante riesgo (94.5/100), mientras organización colectiva (56.5/100) es la dimensión relativamente más variable del perfil. Sin balón registra 42.2 acciones de counterpress por partido y 27.1% de sus Pressure events aparecen en x≥80. Con balón, 45.4% de las secuencias que cumplen el proxy de atracción de presión encuentran una liberación progresiva posterior. Los patrones candidatos con mayor evidencia incluyen Conservación bajo alta restricción, Respuesta inmediata tras pérdida, Uso de banda como restricción. EFOS describe regularidades observadas; no afirma por sí solo que sean instrucciones deliberadas del entrenador.",
+    "key_question": "¿Qué provoca los momentos en que organización colectiva se separa del comportamiento habitual y cómo cambia la respuesta del equipo después?",
+    "strongest": "Respuesta ante riesgo",
+    "weakest": "Organización colectiva"
+  },
+  "system_identity": {
+    "ESI": 72.015,
+    "dimensions": {
+      "OC": 56.52994012689667,
+      "HPS": 70.04233334429888,
+      "RPS": 94.52972849123611,
+      "DS": 83.95692387732568,
+      "DER": 61.872739584293704
+    },
+    "strongest_relative": "RPS",
+    "weakest_relative": "OC",
+    "internal_median": 70.0423,
+    "overview": {
+      "id": "system_identity_overview",
+      "section": "system_identity",
+      "claim": "El ESI global es 72.01. La dimensión relativamente más alta dentro del perfil es Respuesta ante riesgo (RPS) (94.53) y la relativamente más baja es Organización colectiva (OC) (56.53). Esto describe la forma interna del perfil, no una clasificación absoluta.",
+      "evidence": {
+        "ESI": 72.015,
+        "dimensions": {
+          "OC": 56.52994012689667,
+          "HPS": 70.04233334429888,
+          "RPS": 94.52972849123611,
+          "DS": 83.95692387732568,
+          "DER": 61.872739584293704
+        },
+        "strongest_relative": "RPS",
+        "weakest_relative": "OC"
+      },
+      "n": 68382,
+      "source": "EFOS_METRIC",
+      "confidence": "MEDIUM",
+      "limitation": "ESI y dimensiones siguen siendo hipótesis descriptivas hasta completar calibración externa."
+    },
+    "claims": [
+      {
+        "id": "metric_oc",
+        "section": "system_identity",
+        "claim": "Organización colectiva (OC) = 56.53. Dentro de las cinco dimensiones del propio modelo, se sitúa por debajo de la mediana interna (70.04); representa la cohesión organizacional estimada del sistema a partir de su compactación espacial y señales de control disponibles.",
+        "evidence": {
+          "metric": "OC",
+          "value": 56.5299,
+          "internal_median": 70.0423,
+          "delta_vs_internal_median": -13.5124
+        },
+        "n": 68382,
+        "source": "EFOS_METRIC",
+        "confidence": "MEDIUM",
+        "limitation": "Comparación relativa dentro del modelo/muestra; no es un benchmark de liga calibrado."
+      },
+      {
+        "id": "metric_hps",
+        "section": "system_identity",
+        "claim": "Estabilidad bajo presión (HPS) = 70.04. Dentro de las cinco dimensiones del propio modelo, se sitúa cerca de la mediana interna (70.04); representa cuánto de la funcionalidad del equipo se conserva cuando aumenta la restricción contextual rival.",
+        "evidence": {
+          "metric": "HPS",
+          "value": 70.0423,
+          "internal_median": 70.0423,
+          "delta_vs_internal_median": 0.0
+        },
+        "n": 59824,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Comparación relativa dentro del modelo/muestra; no es un benchmark de liga calibrado."
+      },
+      {
+        "id": "metric_rps",
+        "section": "system_identity",
+        "claim": "Respuesta ante riesgo (RPS) = 94.53. Dentro de las cinco dimensiones del propio modelo, se sitúa por encima de la mediana interna (70.04); representa la estabilidad con la que el sistema procesa acciones de riesgo en zonas vulnerables dentro de la definición actual.",
+        "evidence": {
+          "metric": "RPS",
+          "value": 94.5297,
+          "internal_median": 70.0423,
+          "delta_vs_internal_median": 24.4874
+        },
+        "n": 68382,
+        "source": "EFOS_METRIC",
+        "confidence": "MEDIUM",
+        "limitation": "Comparación relativa dentro del modelo/muestra; no es un benchmark de liga calibrado."
+      },
+      {
+        "id": "metric_ds",
+        "section": "system_identity",
+        "claim": "Estabilidad de decisión (DS) = 83.96. Dentro de las cinco dimensiones del propio modelo, se sitúa por encima de la mediana interna (70.04); representa la estabilidad de ejecución/decisión observada frente a las probabilidades de pase disponibles.",
+        "evidence": {
+          "metric": "DS",
+          "value": 83.9569,
+          "internal_median": 70.0423,
+          "delta_vs_internal_median": 13.9146
+        },
+        "n": 68382,
+        "source": "EFOS_METRIC",
+        "confidence": "MEDIUM",
+        "limitation": "Comparación relativa dentro del modelo/muestra; no es un benchmark de liga calibrado."
+      },
+      {
+        "id": "metric_der",
+        "section": "system_identity",
+        "claim": "Respuesta tras pérdida (DER) = 61.87. Dentro de las cinco dimensiones del propio modelo, se sitúa por debajo de la mediana interna (70.04); representa la rapidez con la que el sistema recupera equilibrio después de pérdidas y cambios de estado.",
+        "evidence": {
+          "metric": "DER",
+          "value": 61.8727,
+          "internal_median": 70.0423,
+          "delta_vs_internal_median": -8.1696
+        },
+        "n": 68382,
+        "source": "EFOS_METRIC",
+        "confidence": "MEDIUM",
+        "limitation": "Comparación relativa dentro del modelo/muestra; no es un benchmark de liga calibrado."
+      }
+    ]
+  },
+  "contextual_behavior": {
+    "rows": [
+      {
+        "score_state": "winning",
+        "ESI": 71.6294,
+        "OC": 55.7522,
+        "HPS": 69.9418,
+        "RPS": 94.1238,
+        "DS": 82.918,
+        "DER": 62.2027,
+        "n_events": 16683
+      },
+      {
+        "score_state": "drawing",
+        "ESI": 72.116,
+        "OC": 56.8516,
+        "HPS": 69.9836,
+        "RPS": 94.4462,
+        "DS": 84.0515,
+        "DER": 62.0469,
+        "n_events": 36767
+      },
+      {
+        "score_state": "losing",
+        "ESI": 72.287,
+        "OC": 56.8749,
+        "HPS": 70.2912,
+        "RPS": 95.4455,
+        "DS": 84.8358,
+        "DER": 60.978,
+        "n_events": 14932
+      }
+    ],
+    "spread": 0.6576,
+    "claims": [
+      {
+        "id": "esi_by_score_state",
+        "section": "contextual_behavior",
+        "claim": "El ESI contextual se mantiene prácticamente igual según el marcador: entre 71.6 (winning) y 72.3 (losing), una diferencia de 0.7 puntos demasiado pequeña para interpretarla.",
+        "evidence": {
+          "rows": [
+            {
+              "score_state": "winning",
+              "ESI": 71.6294,
+              "OC": 55.7522,
+              "HPS": 69.9418,
+              "RPS": 94.1238,
+              "DS": 82.918,
+              "DER": 62.2027,
+              "n_events": 16683
+            },
+            {
+              "score_state": "drawing",
+              "ESI": 72.116,
+              "OC": 56.8516,
+              "HPS": 69.9836,
+              "RPS": 94.4462,
+              "DS": 84.0515,
+              "DER": 62.0469,
+              "n_events": 36767
+            },
+            {
+              "score_state": "losing",
+              "ESI": 72.287,
+              "OC": 56.8749,
+              "HPS": 70.2912,
+              "RPS": 95.4455,
+              "DS": 84.8358,
+              "DER": 60.978,
+              "n_events": 14932
+            }
+          ],
+          "spread": 0.6576
+        },
+        "n": 68382,
+        "source": "EFOS_CONTEXT",
+        "confidence": "MEDIUM",
+        "limitation": "El estado del marcador coexiste con rival, minuto, alineación y otros factores; la diferencia no identifica causalidad."
+      }
+    ]
+  },
+  "pressure_resistance": {
+    "hps": 70.0423,
+    "mean_pci_hps_actions": 0.350163,
+    "mean_pci_all_context_actions": 0.325648,
+    "high_pressure_rate": 0.164034,
+    "lane_closure_coverage": 0.0,
+    "components_faced": {
+      "direct_pressure": {
+        "mean": 0.187988,
+        "coverage_pct": 100.0
+      },
+      "nearby_pressure": {
+        "mean": 0.328332,
+        "coverage_pct": 100.0
+      },
+      "boundary_constraint": {
+        "mean": 0.50118,
+        "coverage_pct": 99.07
+      },
+      "defensive_responsibility": {
+        "mean": 0.543549,
+        "coverage_pct": 100.0
+      },
+      "control_constraint": {
+        "mean": 0.227594,
+        "coverage_pct": 86.79
+      },
+      "lane_closure": {
+        "mean": null,
+        "coverage_pct": 0.0
+      }
+    },
+    "components_imposed": {
+      "direct_pressure": {
+        "mean": 0.212682,
+        "coverage_pct": 100.0
+      },
+      "nearby_pressure": {
+        "mean": 0.354166,
+        "coverage_pct": 100.0
+      },
+      "boundary_constraint": {
+        "mean": 0.484933,
+        "coverage_pct": 98.9
+      },
+      "defensive_responsibility": {
+        "mean": 0.505923,
+        "coverage_pct": 100.0
+      },
+      "control_constraint": {
+        "mean": 0.270134,
+        "coverage_pct": 81.81
+      },
+      "lane_closure": {
+        "mean": null,
+        "coverage_pct": 0.0
+      }
+    },
+    "imposed_summary": {
+      "mean_pci": 0.335605,
+      "high_pressure_rate": 0.180862,
+      "n_actions": 55971
+    },
+    "components_0_100": {
+      "retention": 92.15,
+      "progression": 54.34,
+      "value_preservation": 50.22,
+      "decision_stability": 61.35
+    },
+    "claims": [
+      {
+        "id": "pressure_resistance",
+        "section": "pressure_resistance",
+        "claim": "HPS v2 = 70.04 con un PCI medio de 0.350 sobre las acciones elegibles de HPS. EFOS separa el estímulo (presión/restricción rival) de la respuesta del sistema. Retención=92.2, progresión=54.3, preservación de valor=50.2 y estabilidad de decisión=61.4 en escala 0–100.",
+        "evidence": {
+          "HPS": 70.0423,
+          "mean_PCI_HPS_actions": 0.350163,
+          "components": {
+            "retention": 92.15,
+            "progression": 54.34,
+            "value_preservation": 50.22,
+            "decision_stability": 61.35
+          },
+          "n_actions": 59824
+        },
+        "n": 59824,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "PCI EVENT_PROXY no contiene velocidad/dirección continuas; HPS no implica intención del entrenador."
+      },
+      {
+        "id": "pressure_environment",
+        "section": "pressure_resistance",
+        "claim": "El PCI medio sobre todas las acciones contextuales del equipo es 0.326; el 16.4% supera el umbral operativo de presión alta (PCI≥0.60). La cobertura de Lane Closure es 0.0%; con 0% el motor trabaja como EVENT_PROXY y no como tracking/360 completo.",
+        "evidence": {
+          "mean_PCI_all_actions": 0.325648,
+          "high_pressure_rate_pct": 16.4,
+          "lane_closure_coverage_pct": 0.0,
+          "threshold": 0.6,
+          "components": {
+            "direct_pressure": {
+              "mean": 0.187988,
+              "coverage_pct": 100.0
+            },
+            "nearby_pressure": {
+              "mean": 0.328332,
+              "coverage_pct": 100.0
+            },
+            "boundary_constraint": {
+              "mean": 0.50118,
+              "coverage_pct": 99.07
+            },
+            "defensive_responsibility": {
+              "mean": 0.543549,
+              "coverage_pct": 100.0
+            },
+            "control_constraint": {
+              "mean": 0.227594,
+              "coverage_pct": 86.79
+            },
+            "lane_closure": {
+              "mean": null,
+              "coverage_pct": 0.0
+            }
+          }
+        },
+        "n": 68382,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "El umbral PCI=0.60 es operativo y requiere calibración externa."
+      },
+      {
+        "id": "pressure_imposed_context",
+        "section": "pressing_model",
+        "claim": "Sobre acciones del rival, el contexto defensivo asociado al equipo registra PCI medio=0.336 y 18.1% de acciones en PCI≥0.60. Los componentes medios son presión directa=0.213, presión cercana=0.354, restricción de banda=0.485 y DefR=0.506. DefR se interpreta como proxy de responsabilidad defensiva, no como intensidad física.",
+        "evidence": {
+          "mean_PCI_opponent_actions": 0.335605,
+          "high_pressure_rate_pct": 18.09,
+          "components": {
+            "direct_pressure": {
+              "mean": 0.212682,
+              "coverage_pct": 100.0
+            },
+            "nearby_pressure": {
+              "mean": 0.354166,
+              "coverage_pct": 100.0
+            },
+            "boundary_constraint": {
+              "mean": 0.484933,
+              "coverage_pct": 98.9
+            },
+            "defensive_responsibility": {
+              "mean": 0.505923,
+              "coverage_pct": 100.0
+            },
+            "control_constraint": {
+              "mean": 0.270134,
+              "coverage_pct": 81.81
+            },
+            "lane_closure": {
+              "mean": null,
+              "coverage_pct": 0.0
+            }
+          }
+        },
+        "n": 55971,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Las acciones del rival bajo presión son compatibles con restricción generada por el equipo defensor, pero no equivalen a tracking continuo ni aíslan todas las causas contextuales."
+      }
+    ]
+  },
+  "dynamic_states": {
+    "state_distribution": {
+      "adaptation": {
+        "windows": 143,
+        "share_pct": 52.77
+      },
+      "stability": {
+        "windows": 125,
+        "share_pct": 46.13
+      },
+      "tension": {
+        "windows": 3,
+        "share_pct": 1.11
+      }
+    },
+    "transitions": [
+      {
+        "from": "adaptation",
+        "to": "adaptation",
+        "probability": 0.536585
+      },
+      {
+        "from": "adaptation",
+        "to": "stability",
+        "probability": 0.439024
+      },
+      {
+        "from": "adaptation",
+        "to": "tension",
+        "probability": 0.02439
+      },
+      {
+        "from": "stability",
+        "to": "adaptation",
+        "probability": 0.545455
+      },
+      {
+        "from": "stability",
+        "to": "stability",
+        "probability": 0.454545
+      },
+      {
+        "from": "stability",
+        "to": "tension",
+        "probability": 0.0
+      }
+    ],
+    "claims": [
+      {
+        "id": "dtc_states",
+        "section": "dynamic_states",
+        "claim": "DTC clasifica 271 ventanas. El estado más frecuente es adaptation (52.8% de las ventanas). La transición condicional más frecuente observada es stability → adaptation (54.5%).",
+        "evidence": {
+          "state_distribution": {
+            "adaptation": {
+              "windows": 143,
+              "share_pct": 52.77
+            },
+            "stability": {
+              "windows": 125,
+              "share_pct": 46.13
+            },
+            "tension": {
+              "windows": 3,
+              "share_pct": 1.11
+            }
+          },
+          "top_transition": {
+            "from": "stability",
+            "to": "adaptation",
+            "probability": 0.545455
+          }
+        },
+        "n": 271,
+        "source": "DTC_ENGINE",
+        "confidence": "MEDIUM",
+        "limitation": "Los estados DTC dependen de umbrales configurables de ESI/HPS/DER y todavía requieren calibración externa."
+      }
+    ]
+  },
+  "defensive_traps": {
+    "trap_attempts": 1518,
+    "successful_traps": 1384,
+    "DTE": 91.1726,
+    "trap_rate": 21.6116,
+    "outcome_distribution": {
+      "Negative OBV": 534,
+      "Backward pass": 375,
+      "Incomplete": 268,
+      "Forced long pass": 92,
+      "Dispossessed": 54,
+      "Out": 31,
+      "Miscontrol": 19,
+      "Unknown": 6
+    },
+    "source_distribution": {
+      "EVENT_PROXY": 1518
+    },
+    "claims": [
+      {
+        "id": "defensive_traps",
+        "section": "defensive_traps",
+        "claim": "El Trap Engine detecta 1518 secuencias candidatas y clasifica 1384 como exitosas con la definición operativa actual, produciendo DTE=91.17% y Trap Rate=21.61 por cada 100 posesiones rivales observadas. Estos valores describen la salida del detector, no un benchmark validado de eficiencia defensiva.",
+        "evidence": {
+          "trap_attempts": 1518,
+          "successful_traps": 1384,
+          "DTE": 91.1726,
+          "trap_rate": 21.6116,
+          "top_outcomes": {
+            "Negative OBV": 534,
+            "Backward pass": 375,
+            "Incomplete": 268,
+            "Forced long pass": 92,
+            "Dispossessed": 54,
+            "Out": 31,
+            "Miscontrol": 19,
+            "Unknown": 6
+          },
+          "source_distribution": {
+            "EVENT_PROXY": 1518
+          }
+        },
+        "n": 1518,
+        "source": "TRAP_ENGINE",
+        "confidence": "EXPERIMENTAL",
+        "limitation": "Umbrales y definición de outcome siguen pendientes de calibración empírica; un DTE alto no debe interpretarse todavía como rendimiento real equivalente."
+      }
+    ]
+  },
+  "coach_tactical_signature": {
+    "construction": 25.059226112134773,
+    "progression": 7.421543681085665,
+    "attack": 94.62529125598356,
+    "defense": 68.35375781150985,
+    "transition": 45.535714285714285,
+    "adaptation": null,
+    "trap_efficiency": 91.17259552042161,
+    "pressure_resistance": 70.04233334429888,
+    "mean_pressure_context": 32.56483926186754,
+    "confidence": 100.0
+  },
+  "coach_tactical_signature_interpretation": {
+    "components": [
+      {
+        "component": "construction",
+        "value": 25.0592,
+        "meaning": "densidad heurística de pases de construcción respecto al volumen total de eventos"
+      },
+      {
+        "component": "progression",
+        "value": 7.4215,
+        "meaning": "densidad heurística de progresiones profundas desde zona inicial hacia X>80"
+      },
+      {
+        "component": "attack",
+        "value": 94.6253,
+        "meaning": "densidad heurística de eventos del equipo en último tercio"
+      },
+      {
+        "component": "defense",
+        "value": 68.3538,
+        "meaning": "densidad heurística de eventos Pressure ejecutados por el equipo"
+      },
+      {
+        "component": "transition",
+        "value": 45.5357,
+        "meaning": "proporción de pérdidas con respuesta registrada dentro de 5 segundos"
+      },
+      {
+        "component": "adaptation",
+        "value": null,
+        "meaning": "componente reservado para adaptación; en Sprint 4 no está estimado como dimensión independiente"
+      },
+      {
+        "component": "trap_efficiency",
+        "value": 91.1726,
+        "meaning": "DTE del Trap Engine; experimental hasta calibración"
+      },
+      {
+        "component": "pressure_resistance",
+        "value": 70.0423,
+        "meaning": "HPS v2 utilizado como componente de resistencia contextual"
+      },
+      {
+        "component": "mean_pressure_context",
+        "value": 32.5648,
+        "meaning": "PCI medio reescalado a 0–100"
+      },
+      {
+        "component": "confidence",
+        "value": 100.0,
+        "meaning": "cobertura muestral interna del CTS, no certeza causal del análisis"
+      }
+    ],
+    "claims": [
+      {
+        "id": "coach_tactical_signature",
+        "section": "coach_signature",
+        "claim": "CTS funciona como vector descriptivo y no como calificación única del entrenador. construction=25.1; progression=7.4; attack=94.6; defense=68.4; transition=45.5; trap_efficiency=91.2; pressure_resistance=70.0; mean_pressure_context=32.6. Adaptation permanece N/A en Sprint 4.",
+        "evidence": {
+          "components": [
+            {
+              "component": "construction",
+              "value": 25.0592,
+              "meaning": "densidad heurística de pases de construcción respecto al volumen total de eventos"
+            },
+            {
+              "component": "progression",
+              "value": 7.4215,
+              "meaning": "densidad heurística de progresiones profundas desde zona inicial hacia X>80"
+            },
+            {
+              "component": "attack",
+              "value": 94.6253,
+              "meaning": "densidad heurística de eventos del equipo en último tercio"
+            },
+            {
+              "component": "defense",
+              "value": 68.3538,
+              "meaning": "densidad heurística de eventos Pressure ejecutados por el equipo"
+            },
+            {
+              "component": "transition",
+              "value": 45.5357,
+              "meaning": "proporción de pérdidas con respuesta registrada dentro de 5 segundos"
+            },
+            {
+              "component": "adaptation",
+              "value": null,
+              "meaning": "componente reservado para adaptación; en Sprint 4 no está estimado como dimensión independiente"
+            },
+            {
+              "component": "trap_efficiency",
+              "value": 91.1726,
+              "meaning": "DTE del Trap Engine; experimental hasta calibración"
+            },
+            {
+              "component": "pressure_resistance",
+              "value": 70.0423,
+              "meaning": "HPS v2 utilizado como componente de resistencia contextual"
+            },
+            {
+              "component": "mean_pressure_context",
+              "value": 32.5648,
+              "meaning": "PCI medio reescalado a 0–100"
+            },
+            {
+              "component": "confidence",
+              "value": 100.0,
+              "meaning": "cobertura muestral interna del CTS, no certeza causal del análisis"
+            }
+          ]
+        },
+        "n": 0,
+        "source": "CTS_ENGINE",
+        "confidence": "MEDIUM",
+        "limitation": "Las escalas CTS son heurísticas internas y no están calibradas como percentiles de liga."
+      }
+    ]
+  },
+  "coach_principles": [
+    {
+      "principle": "Ball retention under high constraint",
+      "display_name": "Conservación bajo alta restricción",
+      "value_pct": 95.4,
+      "confidence_score": 97.69,
+      "evidence_n": 11217,
+      "source": "EVENT_PROXY"
+    },
+    {
+      "principle": "Defensive trap execution",
+      "display_name": "Ejecución de traps defensivos",
+      "value_pct": 91.17,
+      "confidence_score": 94.78,
+      "evidence_n": 1518,
+      "source": "TRAP_ENGINE"
+    },
+    {
+      "principle": "Immediate response after possession loss",
+      "display_name": "Respuesta inmediata tras pérdida",
+      "value_pct": 45.54,
+      "confidence_score": 75.23,
+      "evidence_n": 2912,
+      "source": "TRANSITION_ENGINE"
+    },
+    {
+      "principle": "Boundary use within high-constraint actions",
+      "display_name": "Uso de banda como restricción",
+      "value_pct": 30.53,
+      "confidence_score": 69.79,
+      "evidence_n": 10123,
+      "source": "EVENT_PROXY"
+    },
+    {
+      "principle": "High-block pressure",
+      "display_name": "Presión en bloque alto",
+      "value_pct": 27.01,
+      "confidence_score": 68.1,
+      "evidence_n": 5609,
+      "source": "EVENT"
+    },
+    {
+      "principle": "Direct pressure on opponent actions",
+      "display_name": "Presión directa sobre acciones rivales",
+      "value_pct": 21.27,
+      "confidence_score": 67.24,
+      "evidence_n": 55971,
+      "source": "EVENT_PROXY"
+    },
+    {
+      "principle": "Direct deep progression from X<40 to X>80",
+      "display_name": "Progresión directa desde inicio a último tercio",
+      "value_pct": 3.96,
+      "confidence_score": 60.65,
+      "evidence_n": 5126,
+      "source": "EVENT"
+    }
+  ],
+  "player_participation": {
+    "players": [
+      {
+        "player": "Igor Lichnovsky Osorio",
+        "LAP": 76.19,
+        "critical_actions": 32,
+        "final_third_actions": 42,
+        "xG": 0.7458,
+        "xA": 0.0
+      },
+      {
+        "player": "Ralph Orquin",
+        "LAP": 67.5,
+        "critical_actions": 54,
+        "final_third_actions": 80,
+        "xG": 0.0307,
+        "xA": 0.0
+      },
+      {
+        "player": "Raphael Cavalcante Veiga",
+        "LAP": 66.96,
+        "critical_actions": 383,
+        "final_third_actions": 572,
+        "xG": 1.9055,
+        "xA": 0.0
+      },
+      {
+        "player": "Cristian Alexis Borja González",
+        "LAP": 66.45,
+        "critical_actions": 808,
+        "final_third_actions": 1216,
+        "xG": 0.4989,
+        "xA": 0.0
+      },
+      {
+        "player": "Miguel Ángel Vázquez García",
+        "LAP": 65.64,
+        "critical_actions": 128,
+        "final_third_actions": 195,
+        "xG": 0.9358,
+        "xA": 0.0
+      },
+      {
+        "player": "Alexis Hazael Gutiérrez Torres",
+        "LAP": 65.61,
+        "critical_actions": 454,
+        "final_third_actions": 692,
+        "xG": 1.1074,
+        "xA": 0.0
+      },
+      {
+        "player": "Aaron Mejía Montoya",
+        "LAP": 65.32,
+        "critical_actions": 113,
+        "final_third_actions": 173,
+        "xG": 0.0,
+        "xA": 0.0
+      },
+      {
+        "player": "Vinícius Moreira de Lima",
+        "LAP": 64.11,
+        "critical_actions": 134,
+        "final_third_actions": 209,
+        "xG": 0.7567,
+        "xA": 0.0
+      }
+    ],
+    "claims": [
+      {
+        "id": "lap_participation",
+        "section": "player_participation",
+        "claim": "LAP describe qué proporción de las acciones de cada jugador en último tercio pertenece a tipos definidos como críticos. En la tabla descriptiva, Igor Lichnovsky Osorio registra 76.2% (32/42) dentro de esta definición.",
+        "evidence": {
+          "players": [
+            {
+              "player": "Igor Lichnovsky Osorio",
+              "LAP": 76.19,
+              "critical_actions": 32,
+              "final_third_actions": 42,
+              "xG": 0.7458,
+              "xA": 0.0
+            },
+            {
+              "player": "Ralph Orquin",
+              "LAP": 67.5,
+              "critical_actions": 54,
+              "final_third_actions": 80,
+              "xG": 0.0307,
+              "xA": 0.0
+            },
+            {
+              "player": "Raphael Cavalcante Veiga",
+              "LAP": 66.96,
+              "critical_actions": 383,
+              "final_third_actions": 572,
+              "xG": 1.9055,
+              "xA": 0.0
+            },
+            {
+              "player": "Cristian Alexis Borja González",
+              "LAP": 66.45,
+              "critical_actions": 808,
+              "final_third_actions": 1216,
+              "xG": 0.4989,
+              "xA": 0.0
+            },
+            {
+              "player": "Miguel Ángel Vázquez García",
+              "LAP": 65.64,
+              "critical_actions": 128,
+              "final_third_actions": 195,
+              "xG": 0.9358,
+              "xA": 0.0
+            },
+            {
+              "player": "Alexis Hazael Gutiérrez Torres",
+              "LAP": 65.61,
+              "critical_actions": 454,
+              "final_third_actions": 692,
+              "xG": 1.1074,
+              "xA": 0.0
+            },
+            {
+              "player": "Aaron Mejía Montoya",
+              "LAP": 65.32,
+              "critical_actions": 113,
+              "final_third_actions": 173,
+              "xG": 0.0,
+              "xA": 0.0
+            },
+            {
+              "player": "Vinícius Moreira de Lima",
+              "LAP": 64.11,
+              "critical_actions": 134,
+              "final_third_actions": 209,
+              "xG": 0.7567,
+              "xA": 0.0
+            }
+          ]
+        },
+        "n": 3179,
+        "source": "LAP_ENGINE",
+        "confidence": "MEDIUM",
+        "limitation": "LAP mide participación relativa en acciones críticas del último tercio; no es una medida de calidad, valor o ranking global del jugador."
+      }
+    ]
+  },
+  "temporal_evolution": {
+    "ordering": "dataset_order",
+    "n_matches": 38,
+    "phases": [
+      {
+        "phase": "early",
+        "matches": 13,
+        "ESI": 71.3311,
+        "OC": 55.4624,
+        "HPS": 69.4253,
+        "RPS": 94.673,
+        "DS": 81.0808,
+        "DER": 62.4189
+      },
+      {
+        "phase": "middle",
+        "matches": 13,
+        "ESI": 72.0114,
+        "OC": 56.8794,
+        "HPS": 69.7019,
+        "RPS": 94.0038,
+        "DS": 83.2055,
+        "DER": 62.8481
+      },
+      {
+        "phase": "late",
+        "matches": 12,
+        "ESI": 71.5592,
+        "OC": 59.0538,
+        "HPS": 69.8945,
+        "RPS": 92.3793,
+        "DS": 82.2681,
+        "DER": 60.0039
+      }
+    ],
+    "delta_late_vs_early": {
+      "ESI": 0.2281,
+      "OC": 3.5914,
+      "HPS": 0.4692,
+      "RPS": -2.2937,
+      "DS": 1.1873,
+      "DER": -2.415
+    },
+    "claims": [
+      {
+        "id": "temporal_evolution",
+        "section": "temporal_evolution",
+        "claim": "Al dividir la muestra en tres bloques por orden de aparición en el dataset, el mayor cambio entre el primer y último bloque aparece en OC: 55.46 → 59.05 (Δ=+3.59); por tanto aumenta dentro de esta partición descriptiva.",
+        "evidence": {
+          "ordering": "dataset_order",
+          "phases": [
+            {
+              "phase": "early",
+              "matches": 13,
+              "ESI": 71.3311,
+              "OC": 55.4624,
+              "HPS": 69.4253,
+              "RPS": 94.673,
+              "DS": 81.0808,
+              "DER": 62.4189
+            },
+            {
+              "phase": "middle",
+              "matches": 13,
+              "ESI": 72.0114,
+              "OC": 56.8794,
+              "HPS": 69.7019,
+              "RPS": 94.0038,
+              "DS": 83.2055,
+              "DER": 62.8481
+            },
+            {
+              "phase": "late",
+              "matches": 12,
+              "ESI": 71.5592,
+              "OC": 59.0538,
+              "HPS": 69.8945,
+              "RPS": 92.3793,
+              "DS": 82.2681,
+              "DER": 60.0039
+            }
+          ],
+          "delta_late_vs_early": {
+            "ESI": 0.2281,
+            "OC": 3.5914,
+            "HPS": 0.4692,
+            "RPS": -2.2937,
+            "DS": 1.1873,
+            "DER": -2.415
+          }
+        },
+        "n": 38,
+        "source": "MATCH_WINDOWS",
+        "confidence": "MEDIUM",
+        "limitation": "Si no existen fechas de partido, la partición usa el orden del archivo y no debe presentarse como cronología calendario."
+      }
+    ]
+  },
+  "tactical_summary": {
+    "team": "América",
+    "events": 68382,
+    "build_up_passes": 4284,
+    "deep_progressions": 203,
+    "final_third_events": 19412,
+    "pressures": 5609,
+    "mean_pressure_x": 58.91583169905508,
+    "shots": 563,
+    "goals": 59,
+    "under_pressure_rate": 0.1879880670351847
+  },
+  "tactical_framework": {
+    "summary": [
+      "La altura media de las acciones defensivas es x=55.6/120 (Intervención defensiva media-alta). EFOS la interpreta como altura de intervención, no como posición exacta de la línea defensiva.",
+      "Sin balón, el equipo registra 42.2 acciones de counterpress por partido; 27.1% de sus Pressure events aparecen en x≥80 y 18.0% de los pases rivales están etiquetados bajo presión.",
+      "EFOS detecta 1692 pases completados bajo presión antes de x=80 como proxy de atracción ('fishing'). En 45.4% de esos casos la posesión encuentra una liberación progresiva dentro de la ventana secuencial configurada.",
+      "En progresión se observan 37.0 entradas a half-space por partido y 9.3 cadenas A→B→C progresivas por partido como proxy de tercer hombre.",
+      "En último tercio aparecen 20.4 pases por partido hacia el intervalo central-lateral y 16.9 centros por partido que cumplen la geometría del proxy 'Aliup'."
+    ],
+    "claims": [
+      {
+        "id": "tactical_defensive_height",
+        "section": "tactical_framework",
+        "claim": "La altura media de las acciones defensivas es x=55.6/120 (Intervención defensiva media-alta). EFOS la interpreta como altura de intervención, no como posición exacta de la línea defensiva.",
+        "evidence": {
+          "mean_x": 55.594,
+          "actions": 8420
+        },
+        "n": 8420,
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "Altura media de las acciones defensivas; no equivale a la altura geométrica de la línea defensiva sin tracking/360 completo."
+      },
+      {
+        "id": "tactical_pressing_profile",
+        "section": "tactical_framework",
+        "claim": "Sin balón, el equipo registra 42.2 acciones de counterpress por partido; 27.1% de sus Pressure events aparecen en x≥80 y 18.0% de los pases rivales están etiquetados bajo presión.",
+        "evidence": {
+          "counterpress": {
+            "value": null,
+            "count": 1603,
+            "rate": 0.198,
+            "per_match": 42.184,
+            "unit": null,
+            "source": "EVENT",
+            "confidence": "HIGH",
+            "limitation": "StatsBomb marca counterpress en acciones defensivas dentro de 5s de una pérdida en juego abierto; mide acciones, no la calidad del counterpress.",
+            "denominator": 8093,
+            "coverage": null
+          },
+          "high_press_share": {
+            "value": null,
+            "count": 1521,
+            "rate": 0.271,
+            "per_match": 40.026,
+            "unit": null,
+            "source": "EVENT",
+            "confidence": "HIGH",
+            "limitation": "Share de Pressure events con x≥80; describe localización de presión, no altura de bloque en cada frame.",
+            "denominator": 5609,
+            "coverage": null
+          },
+          "opponent_passes_under_pressure": {
+            "value": null,
+            "count": 2798,
+            "rate": 0.18,
+            "per_match": 73.632,
+            "unit": null,
+            "source": "EVENT",
+            "confidence": "HIGH",
+            "limitation": "Acciones de pase rivales etiquetadas under_pressure; no identifica por sí sola el mecanismo colectivo de presión.",
+            "denominator": 15559,
+            "coverage": null
+          }
+        },
+        "n": 8093,
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "Describe frecuencia y localización; no demuestra por sí sola el mecanismo colectivo de presión."
+      },
+      {
+        "id": "tactical_offside_proxy",
+        "section": "tactical_framework",
+        "claim": "El rival acumula 40 pases terminados en offside (1.05 por partido). Es una señal compatible con coordinación de profundidad, pero no se etiqueta automáticamente como 'trampa de fuera de juego'.",
+        "evidence": {
+          "opponent_offside_outcomes": {
+            "value": null,
+            "count": 40,
+            "rate": 0.003,
+            "per_match": 1.053,
+            "unit": null,
+            "source": "EVENT_PROXY",
+            "confidence": "MEDIUM",
+            "limitation": "Cuenta pases del rival terminados en offside. Es compatible con una línea/trampa de fuera de juego, pero no prueba que el equipo la haya provocado deliberadamente.",
+            "denominator": 15559,
+            "coverage": null
+          }
+        },
+        "n": 15559,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Cuenta pases del rival terminados en offside. Es compatible con una línea/trampa de fuera de juego, pero no prueba que el equipo la haya provocado deliberadamente."
+      },
+      {
+        "id": "tactical_pressure_attraction",
+        "section": "tactical_framework",
+        "claim": "EFOS detecta 1692 pases completados bajo presión antes de x=80 como proxy de atracción ('fishing'). En 45.4% de esos casos la posesión encuentra una liberación progresiva dentro de la ventana secuencial configurada.",
+        "evidence": {
+          "pressure_attraction": {
+            "value": null,
+            "count": 1692,
+            "rate": 0.134,
+            "per_match": 44.526,
+            "unit": null,
+            "source": "EVENT_PROXY",
+            "confidence": "MEDIUM",
+            "limitation": "Proxy 'fishing': pase completado bajo presión antes de x=80. No demuestra intención deliberada de atraer rivales.",
+            "denominator": 12662,
+            "coverage": null
+          },
+          "pressure_release": {
+            "value": null,
+            "count": 769,
+            "rate": 0.454,
+            "per_match": 20.237,
+            "unit": null,
+            "source": "SEQUENCE_PROXY",
+            "confidence": "MEDIUM",
+            "limitation": "Tras un pase de atracción, busca progresión en los siguientes eventos de la misma posesión; asociación secuencial, no causalidad.",
+            "denominator": 1692,
+            "coverage": null
+          }
+        },
+        "n": 12662,
+        "source": "SEQUENCE_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Proxy secuencial; no prueba intención deliberada de atraer presión."
+      },
+      {
+        "id": "tactical_progression_patterns",
+        "section": "tactical_framework",
+        "claim": "En progresión se observan 37.0 entradas a half-space por partido y 9.3 cadenas A→B→C progresivas por partido como proxy de tercer hombre.",
+        "evidence": {
+          "halfspace_entries": {
+            "value": null,
+            "count": 1406,
+            "rate": 0.083,
+            "per_match": 37.0,
+            "unit": null,
+            "source": "EVENT_PROXY",
+            "confidence": "MEDIUM",
+            "limitation": "Pases completados a dos zonas predefinidas de half-space; la geometría es una hipótesis configurable del modelo.",
+            "denominator": 16921,
+            "coverage": null
+          },
+          "third_man_progression_proxy": {
+            "value": null,
+            "count": 354,
+            "rate": 0.021,
+            "per_match": 9.316,
+            "unit": null,
+            "source": "SEQUENCE_PROXY",
+            "confidence": "MEDIUM",
+            "limitation": "Detecta cadenas A→B→C progresivas con tres jugadores distintos. No observa movimientos sin balón ni confirma el principio táctico de tercer hombre.",
+            "denominator": 16921,
+            "coverage": null
+          }
+        },
+        "n": 16921,
+        "source": "EVENT/SEQUENCE_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Las zonas y la regla A→B→C son definiciones operativas; no observan movimientos sin balón."
+      },
+      {
+        "id": "tactical_offensive_microconcepts",
+        "section": "tactical_framework",
+        "claim": "En último tercio aparecen 20.4 pases por partido hacia el intervalo central-lateral y 16.9 centros por partido que cumplen la geometría del proxy 'Aliup'.",
+        "evidence": {
+          "interval_entries": {
+            "value": null,
+            "count": 776,
+            "rate": 0.046,
+            "per_match": 20.421,
+            "unit": null,
+            "source": "EVENT_PROXY",
+            "confidence": "MEDIUM",
+            "limitation": "Pases completados hacia el intervalo central-lateral aproximado por half-spaces; no observa desmarques sin balón.",
+            "denominator": 16921,
+            "coverage": null
+          },
+          "cross_to_danger_zone_proxy": {
+            "value": null,
+            "count": 641,
+            "rate": 0.317,
+            "per_match": 16.868,
+            "unit": null,
+            "source": "EVENT_PROXY",
+            "confidence": "LOW",
+            "limitation": "Proxy del concepto 'Aliup': identifica geometría de centro hacia zona peligrosa, pero no rosca, pierna cambiada, segundo palo real ni intención del receptor.",
+            "denominator": 641,
+            "coverage": null
+          }
+        },
+        "n": 16921,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "El proxy Aliup no identifica rosca, pierna cambiada ni receptor/segundo palo real; los intervalos son zonas configurables."
+      },
+      {
+        "id": "tactical_value_layer",
+        "section": "tactical_framework",
+        "claim": "La capa de valor acumula xG=52.68 (1.386 por partido) y OBV neto=57.487.",
+        "evidence": {
+          "xg": {
+            "total": 52.68,
+            "per_match": 1.386,
+            "per_shot": 0.094,
+            "shots": 563,
+            "coverage": 1.0,
+            "source": "EVENT_MODEL",
+            "confidence": "HIGH",
+            "limitation": "xG evalúa la probabilidad del remate, no la calidad de toda la posesión previa."
+          },
+          "obv": {
+            "total_net": 57.487,
+            "per_match": 1.513,
+            "per_100_team_events": 0.084,
+            "coverage": 0.585,
+            "source": "EVENT_MODEL",
+            "confidence": "HIGH",
+            "limitation": "OBV mide cambio de valor esperado asociado a acciones elegibles; no equivale por sí solo a intención táctica."
+          }
+        },
+        "n": 563,
+        "source": "EVENT_MODEL",
+        "confidence": "HIGH",
+        "limitation": "xG/OBV expresan valor esperado; no prueban el principio táctico que originó la acción."
+      }
+    ],
+    "defensive_profile": {
+      "defensive_action_height": {
+        "value": 55.594,
+        "count": null,
+        "rate": null,
+        "per_match": null,
+        "unit": "StatsBomb x (0–120)",
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "Altura media de las acciones defensivas; no equivale a la altura geométrica de la línea defensiva sin tracking/360 completo.",
+        "denominator": 8420,
+        "coverage": 1.0,
+        "band": "Intervención defensiva media-alta",
+        "actions": 8420
+      },
+      "counterpress": {
+        "value": null,
+        "count": 1603,
+        "rate": 0.198,
+        "per_match": 42.184,
+        "unit": null,
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "StatsBomb marca counterpress en acciones defensivas dentro de 5s de una pérdida en juego abierto; mide acciones, no la calidad del counterpress.",
+        "denominator": 8093,
+        "coverage": null
+      },
+      "opponent_offside_outcomes": {
+        "value": null,
+        "count": 40,
+        "rate": 0.003,
+        "per_match": 1.053,
+        "unit": null,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Cuenta pases del rival terminados en offside. Es compatible con una línea/trampa de fuera de juego, pero no prueba que el equipo la haya provocado deliberadamente.",
+        "denominator": 15559,
+        "coverage": null
+      },
+      "opponent_passes_under_pressure": {
+        "value": null,
+        "count": 2798,
+        "rate": 0.18,
+        "per_match": 73.632,
+        "unit": null,
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "Acciones de pase rivales etiquetadas under_pressure; no identifica por sí sola el mecanismo colectivo de presión.",
+        "denominator": 15559,
+        "coverage": null
+      },
+      "high_press_share": {
+        "value": null,
+        "count": 1521,
+        "rate": 0.271,
+        "per_match": 40.026,
+        "unit": null,
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "Share de Pressure events con x≥80; describe localización de presión, no altura de bloque en cada frame.",
+        "denominator": 5609,
+        "coverage": null
+      }
+    },
+    "construction_progression": {
+      "possession_directness": {
+        "value": 0.505,
+        "count": null,
+        "rate": null,
+        "per_match": null,
+        "unit": "StatsBomb possession_directness",
+        "source": "EVENT",
+        "confidence": "HIGH",
+        "limitation": "Media de la variable disponible en el proveedor; debe interpretarse con la definición de StatsBomb del dataset cargado.",
+        "denominator": 59768,
+        "coverage": 0.874
+      },
+      "pressure_attraction_passes": {
+        "value": null,
+        "count": 1692,
+        "rate": 0.134,
+        "per_match": 44.526,
+        "unit": null,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Proxy 'fishing': pase completado bajo presión antes de x=80. No demuestra intención deliberada de atraer rivales.",
+        "denominator": 12662,
+        "coverage": null
+      },
+      "pressure_release_success": {
+        "value": null,
+        "count": 769,
+        "rate": 0.454,
+        "per_match": 20.237,
+        "unit": null,
+        "source": "SEQUENCE_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Tras un pase de atracción, busca progresión en los siguientes eventos de la misma posesión; asociación secuencial, no causalidad.",
+        "denominator": 1692,
+        "coverage": null
+      },
+      "halfspace_entries": {
+        "value": null,
+        "count": 1406,
+        "rate": 0.083,
+        "per_match": 37.0,
+        "unit": null,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Pases completados a dos zonas predefinidas de half-space; la geometría es una hipótesis configurable del modelo.",
+        "denominator": 16921,
+        "coverage": null
+      },
+      "third_man_progression_proxy": {
+        "value": null,
+        "count": 354,
+        "rate": 0.021,
+        "per_match": 9.316,
+        "unit": null,
+        "source": "SEQUENCE_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Detecta cadenas A→B→C progresivas con tres jugadores distintos. No observa movimientos sin balón ni confirma el principio táctico de tercer hombre.",
+        "denominator": 16921,
+        "coverage": null
+      }
+    },
+    "offensive_microconcepts": {
+      "cross_to_danger_zone_proxy": {
+        "value": null,
+        "count": 641,
+        "rate": 0.317,
+        "per_match": 16.868,
+        "unit": null,
+        "source": "EVENT_PROXY",
+        "confidence": "LOW",
+        "limitation": "Proxy del concepto 'Aliup': identifica geometría de centro hacia zona peligrosa, pero no rosca, pierna cambiada, segundo palo real ni intención del receptor.",
+        "denominator": 641,
+        "coverage": null
+      },
+      "interval_entries": {
+        "value": null,
+        "count": 776,
+        "rate": 0.046,
+        "per_match": 20.421,
+        "unit": null,
+        "source": "EVENT_PROXY",
+        "confidence": "MEDIUM",
+        "limitation": "Pases completados hacia el intervalo central-lateral aproximado por half-spaces; no observa desmarques sin balón.",
+        "denominator": 16921,
+        "coverage": null
+      }
+    },
+    "value_purpose": {
+      "xg": {
+        "total": 52.68,
+        "per_match": 1.386,
+        "per_shot": 0.094,
+        "shots": 563,
+        "coverage": 1.0,
+        "source": "EVENT_MODEL",
+        "confidence": "HIGH",
+        "limitation": "xG evalúa la probabilidad del remate, no la calidad de toda la posesión previa."
+      },
+      "obv": {
+        "total_net": 57.487,
+        "per_match": 1.513,
+        "per_100_team_events": 0.084,
+        "coverage": 0.585,
+        "source": "EVENT_MODEL",
+        "confidence": "HIGH",
+        "limitation": "OBV mide cambio de valor esperado asociado a acciones elegibles; no equivale por sí solo a intención táctica."
+      }
+    },
+    "weekly_planning_hypotheses": [
+      {
+        "day": "Lunes",
+        "theme": "Corrección / salida bajo presión",
+        "focus": "Revisar secuencias de atracción de presión y salida posterior; priorizar apoyos y tercer hombre.",
+        "evidence": "pressure_release_success",
+        "requires_opponent_data": false
+      },
+      {
+        "day": "Martes",
+        "theme": "Principios defensivos",
+        "focus": "Coordinar distancias de presión, cobertura y reorganización del bloque tras pérdida.",
+        "evidence": "counterpress/high_press",
+        "requires_opponent_data": false
+      },
+      {
+        "day": "Miércoles",
+        "theme": "Plan contra rival",
+        "focus": "Definir altura y gatillos de presión frente a la salida específica del próximo rival.",
+        "evidence": "offside_proxy=1.05/partido; high_press_share=0.27",
+        "requires_opponent_data": true
+      },
+      {
+        "day": "Jueves",
+        "theme": "Plan ofensivo contra rival",
+        "focus": "Consolidar ataques de intervalo y variantes de centro a zona peligrosa; ajustar al comportamiento defensivo del rival.",
+        "evidence": "interval_entries / halfspace_entries / cross_to_danger_zone_proxy",
+        "requires_opponent_data": true
+      },
+      {
+        "day": "Viernes",
+        "theme": "Balón parado y escenarios",
+        "focus": "Revisar balón parado y escenarios de partido usando xG/OBV como evidencia de valor, sin prescribir carga física desde EFOS.",
+        "evidence": "xG / OBV / play patterns",
+        "requires_opponent_data": false
+      }
+    ],
+    "terminology": {
+      "fishing": "Proxy de atracción de presión: pase completado bajo presión antes del último tercio, con evaluación adicional de liberación/progresión posterior.",
+      "third_man": "Proxy secuencial A→B→C con tres jugadores distintos y ganancia territorial; no observa el movimiento sin balón.",
+      "aliup": "Etiqueta conceptual de video; EFOS sólo observa un proxy geométrico de centro hacia zona peligrosa.",
+      "offside_trap": "EFOS observa outcomes de offside del rival; atribuirlos a una trampa deliberada requiere validación de video/360."
+    },
+    "methodological_guardrail": "Cada concepto se reporta como observación o proxy según la información realmente disponible. Un proxy no prueba por sí solo intención del entrenador.",
+    "data_quality": {
+      "rows_before": 124353,
+      "rows_after": 124353,
+      "duplicates_removed": 0,
+      "dedupe_key": "event_id"
+    }
+  },
+  "transition_response_rate": 0.45535714285714285,
+  "conclusion": "En la muestra analizada, América se define principalmente por respuesta ante riesgo (94.5/100), mientras organización colectiva (56.5/100) es la dimensión relativamente más variable del perfil. Sin balón registra 42.2 acciones de counterpress por partido y 27.1% de sus Pressure events aparecen en x≥80. Con balón, 45.4% de las secuencias que cumplen el proxy de atracción de presión encuentran una liberación progresiva posterior. Los patrones candidatos con mayor evidencia incluyen Conservación bajo alta restricción, Respuesta inmediata tras pérdida, Uso de banda como restricción. EFOS describe regularidades observadas; no afirma por sí solo que sean instrucciones deliberadas del entrenador.",
+  "limitations": [
+    "ESI y sus dimensiones aún no están calibrados como benchmark universal de liga.",
+    "PCI basado sólo en eventos es un proxy: no equivale a tracking continuo ni a Time-to-Intercept real.",
+    "Trap Engine y DTE permanecen experimentales hasta calibrar umbrales/outcomes contra video o etiquetado humano.",
+    "DTC depende de umbrales configurables y debe validarse antes de tratar sus estados como categorías universales.",
+    "LAP mide participación en acciones críticas definidas por el modelo, no calidad global del jugador.",
+    "Los patrones observados no demuestran por sí solos intención o instrucción del entrenador.",
+    "Fishing, tercer hombre, Aliup, intervalos y trampa de fuera de juego se reportan como proxies cuando el event data no observa directamente el movimiento/estructura requerido.",
+    "La planificación semanal generada es una hipótesis de foco técnico-táctico; EFOS no prescribe carga física ni sustituye el scouting específico del próximo rival.",
+    "Cuando no hay fecha de partido, la evolución usa orden de aparición del dataset, no cronología calendario."
+  ],
+  "analysis_metadata": {
+    "focal_team": "América",
+    "team_selection_mode": "auto_full_coverage",
+    "input_format": "EFOS_NORMALIZED",
+    "source_files": [
+      "america_events.csv"
+    ],
+    "files_loaded": 1,
+    "matches_analyzed": 38,
+    "events_in_dataset": 124353,
+    "team_events": 68382,
+    "frames360_loaded": 0,
+    "formula_profile": "EFOS_v0.4.5_PDF_CoachStory"
+  },
+  "coach_identity": {
+    "equipo": "América",
+    "partidos": 38,
+    "perfil_tipo": "Dominio con balón",
+    "perfil_encaje": 92.73622981672199,
+    "ejemplos": "Pep Guardiola, Mikel Arteta",
+    "estructura": {
+      "partidos_con_once": 37,
+      "dibujo_principal": "4-2-3-1",
+      "dibujo_principal_pct": 43.24324324324324,
+      "dibujos": {
+        "4-2-3-1": 16,
+        "3-4-3": 7,
+        "3-4-2-1": 4,
+        "4-4-2": 3,
+        "4-5-1": 2,
+        "4-3-3": 2,
+        "4-4-1-1": 1,
+        "4-3-1-2": 1,
+        "3-5-2": 1
+      },
+      "n_dibujos": 9,
+      "linea_defensiva": 4,
+      "centrales": 2,
+      "pivotes": 2,
+      "delanteros_centro": 1,
+      "titulares_distintos": 30,
+      "cambios_en_once_por_partido": 3.5,
+      "pct_titularidades_top11": 64.37346437346437
+    },
+    "altura_bloque": {
+      "equipo": 50.501349473684215,
+      "rivales": 44.79356842105262,
+      "indice": 63.1776531798527
+    },
+    "gestion": {
+      "partidos": 38,
+      "cambios_por_partido": 4.894736842105263,
+      "retoques_tacticos_por_partido": 1.763157894736842,
+      "pct_partidos_con_retoque": 97.36842105263158,
+      "minutos_cambios": [
+        73,
+        74,
+        83,
+        83,
+        83,
+        63,
+        63,
+        63,
+        75,
+        84,
+        64,
+        64,
+        75,
+        75,
+        92,
+        75,
+        80,
+        89,
+        89,
+        89,
+        60,
+        60,
+        75,
+        75,
+        80,
+        61,
+        62,
+        62,
+        80,
+        86,
+        59,
+        60,
+        78,
+        88,
+        88,
+        45,
+        69,
+        69,
+        69,
+        78,
+        25,
+        45,
+        66,
+        66,
+        77,
+        43,
+        62,
+        62,
+        63,
+        94,
+        78,
+        78,
+        79,
+        86,
+        86,
+        29,
+        33,
+        74,
+        74,
+        74,
+        27,
+        45,
+        62,
+        78,
+        78,
+        45,
+        83,
+        93,
+        45,
+        45,
+        45,
+        66,
+        70,
+        79,
+        79,
+        87,
+        87,
+        91,
+        45,
+        45,
+        80,
+        86,
+        86,
+        70,
+        70,
+        84,
+        93,
+        74,
+        84,
+        84,
+        93,
+        93,
+        66,
+        66,
+        82,
+        24,
+        45,
+        45,
+        67,
+        67,
+        65,
+        74,
+        74,
+        86,
+        86,
+        57,
+        58,
+        71,
+        71,
+        77,
+        66,
+        66,
+        76,
+        93,
+        45,
+        45,
+        71,
+        71,
+        79,
+        73,
+        73,
+        74,
+        82,
+        82,
+        45,
+        45,
+        85,
+        85,
+        90,
+        38,
+        45,
+        66,
+        66,
+        82,
+        58,
+        70,
+        70,
+        82,
+        83,
+        76,
+        76,
+        76,
+        84,
+        84,
+        64,
+        75,
+        75,
+        89,
+        89,
+        15,
+        66,
+        78,
+        78,
+        78,
+        78,
+        45,
+        56,
+        56,
+        67,
+        83,
+        56,
+        56,
+        79,
+        85,
+        86,
+        45,
+        64,
+        64,
+        71,
+        86,
+        45,
+        59,
+        71,
+        71,
+        86,
+        48,
+        60,
+        61,
+        61,
+        78,
+        78,
+        45,
+        74,
+        74,
+        74,
+        89
+      ],
+      "primer_cambio_mediana": 56.5,
+      "pct_cambios_descanso": 10.75268817204301,
+      "pct_cambios_antes_60": 20.43010752688172,
+      "pct_cambios_ultimos_15": 45.16129032258064,
+      "cambios_segun_marcador": {
+        "losing": {
+          "cambios": 51,
+          "minuto_mediano": 66.0
+        },
+        "drawing": {
+          "cambios": 68,
+          "minuto_mediano": 66.5
+        },
+        "winning": {
+          "cambios": 67,
+          "minuto_mediano": 78.0
+        }
+      },
+      "primer_cambio_segun_marcador": {
+        "losing": 45.0,
+        "drawing": 45.0,
+        "winning": 73.0
+      }
+    },
+    "por_marcador": [
+      {
+        "posesion": 62.1557719054242,
+        "presion_alta": 53.47912524850894,
+        "pase_largo": 15.57395390467666,
+        "altura_bloque": 55.7784,
+        "eventos_equipo": 14932,
+        "rival_posesion": 47.20407485328314,
+        "rival_presion_alta": 45.9478021978022,
+        "rival_pase_largo": 16.772226131832042,
+        "rival_altura_bloque": 48.006,
+        "rival_eventos_equipo": 14986,
+        "segmento": "losing",
+        "fiable": true
+      },
+      {
+        "posesion": 55.735081561015896,
+        "presion_alta": 49.72267536704731,
+        "pase_largo": 16.99546170232472,
+        "altura_bloque": 50.7492,
+        "eventos_equipo": 36767,
+        "rival_posesion": 44.264918438984104,
+        "rival_presion_alta": 43.551289742051594,
+        "rival_pase_largo": 17.574344023323615,
+        "rival_altura_bloque": 47.274480000000004,
+        "rival_eventos_equipo": 30676,
+        "segmento": "drawing",
+        "fiable": true
+      },
+      {
+        "posesion": 52.79592514671686,
+        "presion_alta": 42.392717815344604,
+        "pase_largo": 18.225671140939596,
+        "altura_bloque": 45.765719999999995,
+        "eventos_equipo": 16683,
+        "rival_posesion": 37.8442280945758,
+        "rival_presion_alta": 34.153616703952274,
+        "rival_pase_largo": 18.559353178978316,
+        "rival_altura_bloque": 36.941759999999995,
+        "rival_eventos_equipo": 10309,
+        "segmento": "winning",
+        "fiable": true
+      }
+    ],
+    "por_tiempo": [
+      {
+        "posesion": 55.06798851508749,
+        "presion_alta": 50.71672354948805,
+        "pase_largo": 16.517461878996556,
+        "altura_bloque": 51.2064,
+        "eventos_equipo": 34486,
+        "rival_posesion": 44.93201148491251,
+        "rival_presion_alta": 43.20050600885516,
+        "rival_pase_largo": 16.843501326259947,
+        "rival_altura_bloque": 46.908719999999995,
+        "rival_eventos_equipo": 29331,
+        "segmento": 1,
+        "fiable": true
+      },
+      {
+        "posesion": 57.59892611182444,
+        "presion_alta": 45.837999253452786,
+        "pase_largo": 17.438443611308134,
+        "altura_bloque": 49.3776,
+        "eventos_equipo": 33896,
+        "rival_posesion": 42.40107388817556,
+        "rival_presion_alta": 40.85550690468171,
+        "rival_pase_largo": 18.306951135581556,
+        "rival_altura_bloque": 43.25112,
+        "rival_eventos_equipo": 26640,
+        "segmento": 2,
+        "fiable": true
+      }
+    ],
+    "aviso": "",
+    "textos": {
+      "retrato": "El entrenador de América tiene un perfil de «Dominio con balón»: quiere el balón, lo mueve con paciencia y presiona arriba para recuperarlo pronto. Su dibujo más habitual es un 4-2-3-1 (43 % de los partidos; 9 dibujos distintos en total): línea de 4 atrás, doble pivote y un único delantero centro. Cuando va perdiendo, su equipo tiene más el balón y presiona más arriba, como haría un equipo típico.",
+      "estructura": "Su dibujo más habitual es un 4-2-3-1 (43 % de los partidos; 9 dibujos distintos en total): línea de 4 atrás, doble pivote y un único delantero centro. Como alternativa recurre al 3-4-3 (7 partidos).",
+      "con_balon": "Con balón, su equipo tiene el 57 % de los pases del partido (sus rivales, 43 %) y juega en largo el 17 % de las veces (rivales 19 %).",
+      "sin_balon": "Sin balón, el 48 % de sus presiones son en campo rival (rivales 42 %) y defiende de media a 51 m de su portería, un bloque más adelantado que el de sus rivales (45 m).",
+      "transicion": "Tras perder el balón, presiona de inmediato en 30 de cada 100 presiones (rivales 26) y responde en menos de 5 segundos en el 46 % de las pérdidas.",
+      "reaccion_marcador": "Cuando va perdiendo, frente a cuando va ganando, su equipo tiene más el balón (+9 puntos de posesión; sus rivales al ir perdiendo, +9), presiona más arriba (+11 puntos; sus rivales al ir perdiendo, +12), adelanta su defensa 10 m (+10 m; sus rivales al ir perdiendo, +11 m) y recurre menos al pase largo (-3 puntos; sus rivales al ir perdiendo, -2). Es una reacción de magnitud parecida a la de sus rivales en la misma situación, es decir, habitual en el fútbol.",
+      "reaccion_corta": "Cuando va perdiendo, su equipo tiene más el balón y presiona más arriba, como haría un equipo típico.",
+      "descanso": "En la segunda parte su equipo presiona más atrás (-5 puntos; sus rivales, -2).",
+      "gestion": "Hace 4.9 cambios por partido; el primero, hacia el minuto 56 (mediana). El 11 % de sus cambios son en el descanso y el 45 % en los últimos 15 minutos. Cuando va perdiendo mueve el banquillo antes (minuto 45 frente a 73 cuando gana). Mueve posiciones o cambia el dibujo durante el partido en el 97 % de los encuentros (1.8 ajustes por partido).",
+      "rotacion": "Rota con moderación: cambia de media 3.5 titulares de un partido al siguiente, usó 30 titulares distintos y sus 11 jugadores más utilizados suman el 64 % de las titularidades."
+    }
+  }
+}

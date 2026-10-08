@@ -1,0 +1,50 @@
+EFOS v0.4 Sprint 4 — Coach Story validation
+============================================
+Dataset: America, 38 matches, 124,353 events
+Tests: 42/42 passed
+
+Core outputs:
+- ESI: 72.01
+- OC: 56.53
+- HPS v2: 70.04
+- RPS: 94.53
+- DS: 83.96
+- DER: 61.87
+- HPS eligible actions: 59,824
+- Mean PCI (HPS actions): 0.350
+- Mean PCI (all America actions): 0.326
+- Mean PCI on opponent actions: 0.336
+- Trap attempts: 1,518
+- Successful traps (current experimental definition): 1,384
+- DTE: 91.17% (EXPERIMENTAL; not a validated benchmark)
+- DTC windows: 271
+- Coach Story evidence claims: 21
+
+Generated automatically by run_sprint4.py:
+- coach_story.md
+- coach_story.json
+- evidence.json
+- metrics_summary.csv
+- esi_overall.csv
+- esi_by_context.csv
+- match_windows.csv
+- dtc_states.csv
+- dtc_matrix.csv
+- defensive_traps.csv
+- trap_metrics.csv
+- coach_tactical_signature.csv
+- coach_principle_candidates.csv
+- lap_players.csv
+
+Event-level exports are optional to keep routine runs fast:
+  --export-event-tables
+This adds pressure_context_events.csv and hps_actions.csv.
+
+Methodological safeguards:
+- Data -> Metrics -> Interpretation -> Evidence -> Narrative
+- EVENT_PROXY is explicitly separated from 360/tracking.
+- No real TTI is asserted without tracking.
+- Trap Engine is labeled EXPERIMENTAL.
+- DefR is treated as defensive responsibility proxy, not physical pressure intensity.
+- Coach patterns are observed behavior, not proof of coach intent.
+- Without match dates, temporal blocks use dataset order and are labeled accordingly.
