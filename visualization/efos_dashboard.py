@@ -1004,6 +1004,24 @@ def _set_pieces_page(result: dict) -> None:
     a1,a2=st.columns(2)
     with a1: _metric_card("Peligro generado a balón parado", f"{f['xg_abp']:.2f} xG/partido", f"rivales: {r['xg_abp']:.2f}")
     with a2: _metric_card("Peligro concedido a balón parado", f"{f['xg_abp_contra']:.2f} xG/partido", f"rivales: {r['xg_abp_contra']:.2f}")
+    corner_info=result.get("corner_summary",{}).get("sides",{})
+    for corner_side in ("A favor","En contra"):
+        cs=corner_info.get(corner_side,{})
+        if cs.get("n_corners",0):
+            st.markdown(f"#### Secuencia de córners — {corner_side}")
+            k1,k2,k3=st.columns(3)
+            k1.metric("Córners",cs["n_corners"])
+            k2.metric("Con remate en 10 s",f"{cs['shot_rate_pct']:.1f}%")
+            xx=cs.get("xg_per_corner_covered")
+            k3.metric("xG por córner cubierto",f"{xx:.3f}" if xx is not None else "Sin dato")
+            st.caption(f"Zona habitual: {cs.get('most_common_target_zone') or 'sin muestra suficiente'} · "
+                       f"Cobertura de xG: {cs['xg_coverage_pct']:.1f}% · P1: intervención registrada, no contacto confirmado.")
+    seq=result.get("corner_sequences")
+    if isinstance(seq,pd.DataFrame) and not seq.empty:
+        st.markdown("#### Trazabilidad P0 → P1 → P2")
+        cols=["match_id","minute","side","ejecutor","target_zone","first_registered_player",
+              "shot_generated","corner_xg","goal","xg_coverage"]
+        st.dataframe(seq[[c for c in cols if c in seq.columns]],hide_index=True,use_container_width=True)
     side=st.radio("Balón parado", ["A favor", "En contra"], horizontal=True, key="sp_side")
     ck=f"sp_table_{side}"
     if ck not in c: c[ck]=X.set_piece_table(c["e"], team, against=(side=="En contra"))
