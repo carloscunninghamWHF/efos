@@ -16,6 +16,7 @@ from intelligence.trap_detection import detect_traps
 from intelligence.match_windows import compute_match_windows
 from intelligence.dtc import build_dtc
 from intelligence.cts import compute_cts, compute_adaptation_score
+from intelligence.corner_engine import analyze_corners
 from players.lap import compute_lap
 from coach_story.principles import detect_principles
 from coach_story.story_builder import build_coach_story
@@ -40,6 +41,14 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
     # available for the selected team without assuming a league/season length.
     base=run_sprint2_df(input_events,focal_team,expected_matches,None); ev=base['events']; tr=base['transitions']
     frames=load_statsbomb_360(frames360_path)
+    corner_required={'match_id','period','possession','team','event_type','type_name','timestamp_seconds'}
+    if corner_required.issubset(ev.columns):
+        corner_sequences,corner_summary,corner_claims=analyze_corners(ev,focal_team,frames360=frames)
+    else:
+        corner_sequences=pd.DataFrame()
+        corner_summary={'method':'EFOS_CORNER_SEQUENCE_v0.1','status':'NOT_COMPUTABLE',
+                        'missing_columns':sorted(corner_required.difference(ev.columns)),'sides':{}}
+        corner_claims=[]
     pc=build_pressure_context(ev,frames)
     hps,hps_actions,hps_meta=compute_hps(ev,focal_team,pc)
     dims=compute_dimensions(ev,focal_team,tr,pc); dims['HPS']=hps; esi=compute_esi(dims)
@@ -60,8 +69,11 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
             'pressure_imposed_summary':pressure_imposed_summary,'hps_actions':hps_actions,'hps_meta':hps_meta,
             'esi_dimensions':dims,'ESI':esi,'esi_by_context':context_esi,'match_windows':windows,'dtc_states':states,
             'dtc_matrix':dtc,'traps':traps,'trap_metrics':trap_metrics,'cts':cts,'lap':lap,'principles':principles,
-            'tactical_summary':summary,'tactical_framework':tactical_framework,'transition_response_rate':transition_rate,'adaptation_score':adaptation_score,'frames360_loaded':len(frames)}
+            'tactical_summary':summary,'tactical_framework':tactical_framework,'transition_response_rate':transition_rate,'adaptation_score':adaptation_score,'frames360_loaded':len(frames),
+             'corner_sequences':corner_sequences,'corner_summary':corner_summary}
     coach_story,evidence=build_coach_story(result,focal_team)
+    coach_story['corner_sequence']=corner_summary
+    evidence['claims'].extend(corner_claims)
     coach_story['analysis_metadata']={
         'focal_team': focal_team,
         'team_selection_mode': team_resolution['mode'],
@@ -83,6 +95,13 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
         'evidence':{'dibujo_principal':coach_identity['estructura'].get('dibujo_principal'),'por_marcador':coach_identity['por_marcador']},
         'n':int(coach_identity['partidos']),'source':'COACH_PROFILE_ENGINE','confidence':'MEDIUM',
         'limitation':'Describe al equipo bajo este cuerpo técnico; no separa decisiones del entrenador de la calidad de los jugadores.'})
+    side_for=corner_summary.get('sides',{}).get('A favor',{})
+    if side_for.get('n_corners',0):
+        rate=side_for['shot_rate_pct']
+        football['textos']['balon_parado']+=(
+            f" En córners, se observaron {side_for['n_corners']} cobros; {rate:.1f}% "
+            "terminaron en remate en la misma posesión dentro de 10 segundos. "
+            "Este resultado es descriptivo; no implica intención causal del entrenador.")
     result.update({'style_profile':style,'coach_fit':fit,'coach_identity':coach_identity,'football_report':football})
     result['coach_story']=coach_story; result['evidence']=evidence
     if outdir:
@@ -102,6 +121,8 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
         result['team_coverage'].to_csv(outdir/'team_coverage.csv',index=False)
         schema_report={**input_meta,'resolved_team':focal_team,'team_resolution':team_resolution,'expected_matches_validation':expected_matches}
         with open(outdir/'input_profile.json','w',encoding='utf-8') as f: json.dump(schema_report,f,ensure_ascii=False,indent=2)
+        corner_sequences.to_csv(outdir/'corner_sequences.csv',index=False)
+        with open(outdir/'corner_summary.json','w',encoding='utf-8') as f: json.dump(corner_summary,f,ensure_ascii=False,indent=2)
         with open(outdir/'coach_story.json','w',encoding='utf-8') as f: json.dump(coach_story,f,ensure_ascii=False,indent=2)
         with open(outdir/'tactical_framework.json','w',encoding='utf-8') as f: json.dump(tactical_framework,f,ensure_ascii=False,indent=2)
         with open(outdir/'evidence.json','w',encoding='utf-8') as f: json.dump(evidence,f,ensure_ascii=False,indent=2)
