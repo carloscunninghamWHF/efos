@@ -524,7 +524,7 @@ CTS_LABELS = {
 
 
 def fig_cts_radar(cts: dict, team: str) -> go.Figure:
-    keys=["construction","progression","attack","defense","transition","adaptation"]
+    keys=["construction","progression","attack","defense","transition"]
     vals=[cts.get(k) for k in keys]
     vals=[50.0 if v is None or pd.isna(v) else float(v) for v in vals]
     labels=[CTS_LABELS[k] for k in keys]
@@ -542,7 +542,7 @@ def fig_cts_radar(cts: dict, team: str) -> go.Figure:
         title=dict(text=f"Firma táctica (CTS) · {team}",x=.02,y=.96,font=dict(size=19,color=NAVY)),
     )
     fig.add_annotation(x=.02,y=1.07,xref="paper",yref="paper",showarrow=False,xanchor="left",
-                       text="Seis dimensiones 0–100; Adaptación usa recuperación observable tras tramos de desajuste.",
+                       text="Cinco dimensiones 0–100: construcción, progresión, ataque, defensa y transición.",
                        font=dict(size=11,color=GREY))
     return fig
 

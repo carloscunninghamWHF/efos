@@ -1,8 +1,0 @@
-match_id,event_id,index,possession,possession_team,team,player,minute,second,event_type,x,y,pass_outcome,shot_outcome,duel_outcome,under_pressure,duration
-CSV_0001,e1,1,1,Team A,Team A,Team A Player 1,0,2.1,Pass,45.0,40.0,,,,False,1.2
-CSV_0001,e2,2,1,Team A,Team A,Team A Player 4,0,4.8,Carry,52.3,38.1,,,,False,1.8
-CSV_0001,e3,3,1,Team A,Team A,Team A Player 7,0,7.5,Pass,63.0,25.5,Incomplete,,,True,0.9
-CSV_0001,e4,4,2,Team B,Team B,Team B Player 2,0,9.1,Ball Recovery,65.0,55.0,,,,False,0.5
-CSV_0001,e5,5,2,Team B,Team B,Team B Player 6,0,12.4,Pass,70.2,48.0,,,,False,1.1
-CSV_0001,e6,6,2,Team B,Team B,Team B Player 9,0,15.9,Shot,108.0,40.0,,Goal,,False,0.6
-CSV_0001,e7,,3,Team A,,Team A Player 1,0,18.0,Pass,40.0,30.0,,,,False,1.0

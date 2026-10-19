@@ -81,6 +81,9 @@ def load_event_csv(path: str | Path) -> tuple[pd.DataFrame, dict]:
             f"Columnas encontradas: {meta['columns'][:25]}"
         )
     meta.update({
+        "n_source_rows": int(df.attrs.get("n_source_rows", len(df))),
+        "source_duplicates_removed": int(df.attrs.get("source_duplicates_removed", 0)),
+        "duplicates_removed": int(df.attrs.get("source_duplicates_removed", 0)),
         "n_events_loaded": int(len(df)),
         "n_matches_loaded": int(df["match_id"].nunique()) if "match_id" in df else 0,
         "teams_found": sorted(df["team"].dropna().astype(str).unique().tolist()) if "team" in df else [],
@@ -111,9 +114,11 @@ def load_event_csvs(paths) -> tuple[pd.DataFrame, dict]:
     merged = pd.concat(frames, ignore_index=True, sort=False)
     rows_before = int(len(merged))
 
-    # Prefer stable event UUIDs when present; preserve rows whose event id is null.
+    # Deduplicate by match + provider event ID; never merge distinct matches
+    # solely because a provider has reused an identifier.
     if "event_id" in merged.columns and merged["event_id"].notna().any():
-        with_id = merged[merged["event_id"].notna()].drop_duplicates(subset=["event_id"], keep="first")
+        keys=["match_id", "event_id"] if "match_id" in merged.columns else ["event_id"]
+        with_id = merged[merged["event_id"].notna()].drop_duplicates(subset=keys, keep="first")
         without_id = merged[merged["event_id"].isna()]
         merged = pd.concat([with_id, without_id], ignore_index=True, sort=False)
     elif {"match_id", "index", "team", "event_type"}.issubset(merged.columns):
@@ -128,7 +133,8 @@ def load_event_csvs(paths) -> tuple[pd.DataFrame, dict]:
         "n_files_loaded": len(paths),
         "n_events_before_dedup": rows_before,
         "n_events_loaded": int(len(merged)),
-        "duplicates_removed": rows_before - int(len(merged)),
+        "duplicates_removed": int(sum(m.get("source_duplicates_removed", 0) for m in source_meta)) + rows_before - int(len(merged)),
+        "n_source_rows": int(sum(m.get("n_source_rows", m["n_events_loaded"]) for m in source_meta)),
         "n_matches_loaded": int(merged["match_id"].nunique()) if "match_id" in merged else 0,
         "teams_found": sorted(merged["team"].dropna().astype(str).unique().tolist()) if "team" in merged else [],
     }

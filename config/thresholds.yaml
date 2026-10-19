@@ -108,3 +108,28 @@ tactical_framework:
   planning_interval_per_match: 3.0
   planning_counterpress_share_high: 0.18
   planning_high_press_share_high: 0.35
+
+# EFOS Set Piece Story v0.4.9 — hipótesis exploratorias, editables.
+set_piece_story:
+  shot_window_seconds: 10.0
+  p1_window_seconds: 6.0
+  short_delivery_max_units: 15.0
+  min_flank_examples: 8
+  min_zone_examples: 5
+  min_pattern_examples: 5
+  min_context_examples: 10
+  high_destination_share: 0.40
+  min_xg_coverage_share: 0.80
+  attacking_third_min_x: 80.0
+
+# EFOS v0.4.12 Smart Defensive Tactics: methodological defaults (hypotheses).
+smart_defensive_tactics:
+  min_matches_for_recurrence: 3
+  min_possessions_for_claim: 12
+  min_player_actions: 6
+  recovery_followup_seconds: 5.0
+  near_start_recovery_seconds: 4.0
+  third_start_x: 80.0
+  penalty_area_x: 102.0
+  penalty_area_y_low: 18.0
+  penalty_area_y_high: 62.0

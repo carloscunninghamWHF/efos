@@ -94,7 +94,7 @@ def per_match_table(ev: pd.DataFrame, team: str) -> pd.DataFrame:
             counter = _recovery_to_shot(me, rec, shots)
             sp = shots[shots["play_pattern_name"].isin(SET_PIECES)] if "play_pattern_name" in shots else shots.iloc[0:0]
             osp = oshots[oshots["play_pattern_name"].isin(SET_PIECES)] if "play_pattern_name" in oshots else oshots.iloc[0:0]
-            corners = (passes["play_pattern_name"].eq("From Corner") & passes["location_x"].ge(114)).sum() if "play_pattern_name" in passes else 0
+            corners = int(passes["type_name"].eq("Corner").sum()) if "type_name" in passes else 0
             rows.append({
                 "match_id": mid, "team": tm, "es_focal": tm == team,
                 "rival": next((t for t in teams if t != tm), ""),

@@ -10,5 +10,8 @@ mplsoccer>=1.3
 pydantic>=2.5
 PyYAML>=6.0
 pytest>=7.4
-streamlit>=1.30
+streamlit>=1.41
 reportlab>=4.0
+
+# Trusted CA roots for Streamlit Cloud and macOS Python installs
+certifi>=2024.8.30

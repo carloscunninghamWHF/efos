@@ -50,12 +50,13 @@ KEEP = [
     "defensive_responsibility_pressure_like",
     "defensive_responsibility_interception_like",
     "defensive_responsibility_probability_sum",
+    "aerial_won",  # v0.4.28: duelo aéreo ganado (Perfil por fase)
 ]
 
 # Minuto de inicio de cada periodo en StatsBomb (el reloj no se reinicia).
 PERIOD_START_MIN = {1: 0, 2: 45, 3: 90, 4: 105, 5: 120}
 
-BOOL_COLS = ["under_pressure", "counterpress", "pass_cross", "pass_switch", "through_ball"]
+BOOL_COLS = ["under_pressure", "counterpress", "pass_cross", "pass_switch", "through_ball", "aerial_won"]
 
 
 def _add_monotonic_time(df: pd.DataFrame) -> pd.DataFrame:
@@ -95,6 +96,8 @@ def load_statsbomb_wide(paths: Iterable[Union[str, Path]]) -> pd.DataFrame:
     logger.info("Filas repetidas (freeze frame / alineación) eliminadas: %d", before - len(df))
 
     df = df.rename(columns=RENAME)
+    if "outcome_name" not in df.columns:
+        df["outcome_name"] = pd.NA
     for c in BOOL_COLS:
         if c in df:
             df[c] = df[c].fillna(False).astype(bool)
@@ -104,5 +107,7 @@ def load_statsbomb_wide(paths: Iterable[Union[str, Path]]) -> pd.DataFrame:
 
     df = _add_monotonic_time(df)
     df = df.sort_values(["match_id", "period", "index"]).reset_index(drop=True)
+    df.attrs["n_source_rows"] = int(before)
+    df.attrs["source_duplicates_removed"] = int(before - len(df))
     logger.info("Eventos únicos: %d | partidos: %d", len(df), df["match_id"].nunique())
     return df

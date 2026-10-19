@@ -1,0 +1,12 @@
+...........................                                              [100%]
+27 passed in 3.49s
+
+95 archivos de datos, cálculo, ingesta y configuración comparados byte a byte con v0.4.17. Diferencias: []
+
+Streamlit AppTest, un partido real:
+initial []
+Salida y conexiones []
+Progresión []
+Llegada y finalización []
+Prioridades y evidencia []
+No se realizó captura visual en navegador. No se ejecutó toda la suite histórica.

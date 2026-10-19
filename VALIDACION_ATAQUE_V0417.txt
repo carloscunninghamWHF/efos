@@ -1,0 +1,10 @@
+EFOS v0.4.17 — validación
+
+........................                                                 [100%]
+24 passed in 4.56s
+
+Streamlit AppTest: Identidad, Salida y conexiones, Progresión, Llegada y finalización, Prioridades y evidencia: sin excepciones, usando un partido real.
+Ocho figuras generadas y serializadas con el CSV real completo: 124353 eventos, 38 partidos.
+Compilación Python de módulos modificados: correcta.
+No se ejecutó validación visual mediante captura de navegador: Chromium no disponible y descarga fallida.
+No se afirma validación científica/táctica de índices o reglas. No se ejecutó toda la suite histórica.

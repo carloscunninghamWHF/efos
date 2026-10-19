@@ -1,7 +1,0 @@
-eje,etiqueta,unidad,tipo,equipo,rivales,indice
-posesion,Tiene el balón,% de los pases del partido,estilo,56.64922604407408,43.350773955925916,76.83875101811009
-presion_alta,Presiona en campo rival,% de sus presiones en campo rival,estilo,48.39960739527794,42.22605142339082,62.87460545769601
-contrapresion,Presiona justo tras perder,contrapresiones por cada 100 presiones,estilo,30.042846127365273,26.10129209701183,60.72402369362743
-juego_directo,Usa el pase largo,% de pases de 30 m o más,estilo,17.29328147876858,18.537537135846197,44.4924609025456
-peligro,Genera ocasiones,xG a favor por partido,rendimiento,1.386231900363158,0.891178239131579,68.68923870438202
-solidez,Evita ocasiones del rival,xG en contra por partido,rendimiento,0.891178239131579,1.386231900363158,61.83631852464355

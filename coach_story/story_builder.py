@@ -2,6 +2,7 @@
 from __future__ import annotations
 import math
 from interpretation.metric_interpreter import interpret_metrics
+from knowledge.tactical_context import enrich_claims
 from interpretation.pressure_interpreter import interpret_pressure
 from interpretation.trap_interpreter import interpret_traps
 from interpretation.temporal import analyze_temporal_evolution
@@ -52,6 +53,7 @@ def build_coach_story(result: dict, focal_team: str) -> tuple[dict,dict]:
     signature=interpret_cts(result.get("cts",{}))
     temporal=analyze_temporal_evolution(ev,result.get("match_windows"))
     tactical=interpret_tactical_framework(result.get("tactical_framework"))
+    tactical["claims"]=enrich_claims(tactical.get("claims",[]))
     principles=result.get("principles")
     cts=result.get("cts",{})
 
@@ -79,14 +81,14 @@ def build_coach_story(result: dict, focal_team: str) -> tuple[dict,dict]:
     if counter_pm is not None and high_press is not None:
         tactical_phrase.append(f"Sin balón registra {counter_pm:.1f} acciones de counterpress por partido y {100*high_press:.1f}% de sus Pressure events aparecen en x≥80.")
     if release is not None:
-        tactical_phrase.append(f"Con balón, {100*release:.1f}% de las secuencias que cumplen el proxy de atracción de presión encuentran una liberación progresiva posterior.")
+        tactical_phrase.append(f"Con balón, {100*release:.1f}% de los casos que cumplen la regla de pase bajo presión presentan progresión posterior dentro de la ventana configurada.")
     conclusion=(
-        f"En la muestra analizada, {focal_team} se define principalmente por {strong_label.lower()} ({strong_value:.1f}/100), mientras {weak_label.lower()} ({weak_value:.1f}/100) es la dimensión relativamente más variable del perfil. "
+        f"En la muestra analizada, {focal_team} presenta su puntuación relativa más alta en {strong_label.lower()} ({strong_value:.1f}/100), mientras {weak_label.lower()} ({weak_value:.1f}/100) presenta la puntuación relativa más baja del perfil; esto no mide por sí solo variabilidad temporal. "
         + " ".join(tactical_phrase)
         + f" Los patrones candidatos con mayor evidencia incluyen {pp}. EFOS describe regularidades observadas; no afirma por sí solo que sean instrucciones deliberadas del entrenador."
     )
     key_question=(
-        f"¿Qué provoca los momentos en que {weak_label.lower()} se separa del comportamiento habitual y cómo cambia la respuesta del equipo después?"
+        f"¿En qué contextos {weak_label.lower()} presenta valores distintos y qué secuencias ayudan a interpretarlos?"
     )
 
 

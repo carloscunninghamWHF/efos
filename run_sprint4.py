@@ -16,14 +16,25 @@ from intelligence.trap_detection import detect_traps
 from intelligence.match_windows import compute_match_windows
 from intelligence.dtc import build_dtc
 from intelligence.cts import compute_cts, compute_adaptation_score
+from intelligence.organized_defense_story import build_defensive_story
+from intelligence.smart_defense_tactics import analyze_smart_defense, configured_defensive_settings
+from intelligence.defensive_open_play import analyze as analyze_open_play_defense, STATES as OPEN_PLAY_STATES
+from intelligence.corner_engine import analyze_corners
+from intelligence import organized_attack as _OA
+from intelligence.offensive_story import build_offensive_story, coach_claims
+from intelligence.set_piece_patterns import _corner_config
+from intelligence.set_piece_patterns import analyze_set_pieces, KINDS, SCOPE, narrative_findings, context_finding
 from players.lap import compute_lap
 from coach_story.principles import detect_principles
 from coach_story.story_builder import build_coach_story
+from interpretation.tactical_reasoning import build_tactical_reasoning
+from intelligence.transition_story import analyze_transitions
 from coach_story.tactical_framework import extract_tactical_framework
 from coach_story.report_generator import render_coach_story_md
 from coach_story.pdf_report import build_coach_story_pdf
 from behavior.tactical import tactical_summary
 from ingestion.input_adapter import load_event_csv, load_event_csvs
+from ingestion.statsbomb_auxiliary import extract_statsbomb_auxiliary
 from intelligence.team_scope import resolve_focal_team, team_coverage, slugify_team
 from coach_story.coach_fit import style_by_match, style_profile, coach_fit
 from coach_story.coach_profile import build_coach_profile, render_coach_profile_md, _starters
@@ -32,14 +43,47 @@ from coach_story.football_pdf import build_football_pdf
 from config_loader import get_coach_archetypes
 
 
-def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:Path|None=None, frames360_path:Path|None=None, export_event_tables:bool=False):
+def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:Path|None=None, frames360_path:Path|None=None, export_event_tables:bool=False, match_ids=None):
     paths = list(path) if isinstance(path, (list, tuple, set)) else [path]
     input_events,input_meta = load_event_csvs(paths) if len(paths) > 1 else load_event_csv(paths[0])
+    if match_ids is not None:
+        selected={str(match) for match in match_ids}
+        if not selected:
+            raise ValueError("Debes seleccionar al menos un partido para analizar.")
+        filtered=input_events[input_events["match_id"].astype(str).isin(selected)].copy()
+        missing=selected-set(filtered["match_id"].astype(str).unique())
+        if missing:
+            raise ValueError(f"Los partidos solicitados no aparecen en el CSV: {sorted(missing)}")
+        input_events=filtered.reset_index(drop=True)
+        input_meta={**input_meta, "available_matches_before_filter":input_meta.get("n_matches_loaded"),
+                    "n_matches_loaded":int(input_events["match_id"].nunique()),
+                    "n_events_loaded":len(input_events), "selected_match_ids":sorted(selected)}
     focal_team,team_resolution=resolve_focal_team(input_events,focal_team)
     # expected_matches is validation-only. If omitted, EFOS uses all matches
     # available for the selected team without assuming a league/season length.
     base=run_sprint2_df(input_events,focal_team,expected_matches,None); ev=base['events']; tr=base['transitions']
     frames=load_statsbomb_360(frames360_path)
+    # The wide export may contain separate shot-time freeze frame and lineup
+    # rows. Preserve these by event ID instead of confusing them with 360.
+    wide_paths=[p for p in paths if str(p).lower().endswith(('.csv', '.csv.gz'))]
+    if 'STATSBOMB_WIDE' in input_meta.get('source_formats', [input_meta.get('format')]):
+        from ingestion.input_adapter import inspect_csv_schema
+        wide_paths=[p for p in paths if inspect_csv_schema(p)['format']=='STATSBOMB_WIDE']
+        shot_frames,formation_rows=extract_statsbomb_auxiliary(wide_paths, match_ids)
+    else:
+        shot_frames,formation_rows=pd.DataFrame(),pd.DataFrame()
+    input_meta={**input_meta, 'shot_freeze_frame_rows':len(shot_frames),
+                'shot_freeze_frame_events':int(shot_frames.event_id.nunique()) if not shot_frames.empty else 0,
+                'formation_rows':len(formation_rows)}
+    sp_required={'match_id','period','possession','team','event_type','type_name','timestamp_seconds'}
+    if sp_required.issubset(ev.columns):
+        corner_sequences,corner_summary,corner_claims=analyze_corners(ev,focal_team,frames360=frames,config=_corner_config())
+        set_piece_sequences,set_piece_summary,set_piece_claims=analyze_set_pieces(ev,focal_team,corner_sequences)
+    else:
+        corner_sequences=pd.DataFrame(); set_piece_sequences=pd.DataFrame()
+        corner_summary={'status':'NOT_COMPUTABLE','missing':sorted(sp_required.difference(ev.columns)),'sides':{}}
+        set_piece_summary={'status':'NOT_COMPUTABLE','missing':sorted(sp_required.difference(ev.columns)),'by_kind':{}}
+        corner_claims=[];set_piece_claims=[]
     pc=build_pressure_context(ev,frames)
     hps,hps_actions,hps_meta=compute_hps(ev,focal_team,pc)
     dims=compute_dimensions(ev,focal_team,tr,pc); dims['HPS']=hps; esi=compute_esi(dims)
@@ -60,8 +104,54 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
             'pressure_imposed_summary':pressure_imposed_summary,'hps_actions':hps_actions,'hps_meta':hps_meta,
             'esi_dimensions':dims,'ESI':esi,'esi_by_context':context_esi,'match_windows':windows,'dtc_states':states,
             'dtc_matrix':dtc,'traps':traps,'trap_metrics':trap_metrics,'cts':cts,'lap':lap,'principles':principles,
-            'tactical_summary':summary,'tactical_framework':tactical_framework,'transition_response_rate':transition_rate,'adaptation_score':adaptation_score,'frames360_loaded':len(frames)}
+            'tactical_summary':summary,'tactical_framework':tactical_framework,'transition_response_rate':transition_rate,'adaptation_score':adaptation_score,'frames360_loaded':len(frames),
+            'shot_freeze_frames':shot_frames,'formation_lineups':formation_rows,
+            'corner_sequences':corner_sequences,'corner_summary':corner_summary,
+            'set_piece_sequences':set_piece_sequences,'set_piece_summary':set_piece_summary}
+    defensive_story=build_defensive_story(ev,focal_team)
+    sd_possessions,sd_players,sd_summary,sd_claims=analyze_smart_defense(ev,focal_team,configured_defensive_settings())
+    # v0.4.13: open-play-only scenarios, distinct from v0.4.12 full opposition-attack engine.
+    open_play_need={'match_id','period','index','possession','team','possession_team','event_type'}
+    if open_play_need.issubset(ev.columns) and ev['possession_team'].notna().any():
+        open_play_possessions,open_play_events=analyze_open_play_defense(ev,focal_team)
+    else:
+        open_play_possessions=pd.DataFrame();open_play_events=pd.DataFrame()
+    # v0.4.19: one canonical offensive sample and story shared with attack UX and Coach Story.
+    try:
+        offensive_events=_OA.prepare_attack(ev,focal_team)
+        offensive_possessions=_OA.possession_table(offensive_events)
+        offensive_story=build_offensive_story(offensive_events,offensive_possessions)
+        result['organized_attack_data']=(offensive_events,offensive_possessions)
+    except (ValueError,KeyError,TypeError) as exc:
+        offensive_story={'status':'NOT_COMPUTABLE','overview':'Ataque no evaluable con las columnas disponibles.',
+                         'reason':str(exc),'n_possessions':0,'n_matches':0,'insights':[]}
+    result['offensive_story']=offensive_story
+    result['defensive_open_play_possessions']=open_play_possessions
+    result['defensive_open_play_events']=open_play_events
+    # Freeze frames are kept only when actually provided; never synthesize tracking.
+    result['defensive_360_frames']=frames
+    result["defensive_story"]=defensive_story
+    result["smart_defense_possessions"]=sd_possessions
+    result["smart_defense_players"]=sd_players
+    result["smart_defense_summary"]=sd_summary
     coach_story,evidence=build_coach_story(result,focal_team)
+    coach_story["defensive_story"]=defensive_story
+    # JSON-compatible public digest: identifiers of specific events stay in Evidence Layer.
+    coach_story['offensive_story']={
+        'overview':offensive_story.get('overview'),
+        'status':offensive_story.get('status'),
+        'n_possessions':offensive_story.get('n_possessions',0),
+        'n_matches':offensive_story.get('n_matches',0),
+        'insights':[{k:v for k,v in item.items() if k!='keys'}
+                    for item in offensive_story.get('insights',[])],
+        'limitations':offensive_story.get('limitations',[]),
+    }
+    evidence['claims'].extend(coach_claims(offensive_story))
+    coach_story["smart_defense_tactics"]=sd_summary
+    evidence["claims"].extend(defensive_story["claims"]+sd_claims)
+    coach_story['corner_sequence']=corner_summary
+    coach_story['set_piece_story']=set_piece_summary
+    evidence['claims'].extend(corner_claims+set_piece_claims)
     coach_story['analysis_metadata']={
         'focal_team': focal_team,
         'team_selection_mode': team_resolution['mode'],
@@ -83,7 +173,27 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
         'evidence':{'dibujo_principal':coach_identity['estructura'].get('dibujo_principal'),'por_marcador':coach_identity['por_marcador']},
         'n':int(coach_identity['partidos']),'source':'COACH_PROFILE_ENGINE','confidence':'MEDIUM',
         'limitation':'Describe al equipo bajo este cuerpo técnico; no separa decisiones del entrenador de la calidad de los jugadores.'})
+    # Only sample-supported findings are inserted in the coach-facing report.
+    if not set_piece_sequences.empty:
+        story=[]
+        for kind in KINDS:
+            for side in SCOPE:
+                observed=[f['detail'] for f in narrative_findings(set_piece_sequences,side,kind)
+                          if f.get('status')=='observed']
+                if observed:
+                    story.append(f"{kind} ({side.lower()}): " + " ".join(observed[:2]))
+        if story:
+            football['textos']['balon_parado'] += " " + " ".join(story[:4])
+    if offensive_story.get('n_possessions',0):
+        # Coach-facing description, consistent with the same underlying sequence table.
+        football['textos']['ataque_organizado'] += ' ' + offensive_story['overview']
+    if sd_claims:
+        # Descriptive comparisons only. They do not demonstrate a formation or a coach's intent.
+        football['textos']['defensa_organizada'] += " " + " ".join(c['claim'] for c in sd_claims[:2])
     result.update({'style_profile':style,'coach_fit':fit,'coach_identity':coach_identity,'football_report':football})
+    # Same strict definition used by the transition chapters shown in attack/defense.
+    result['verified_transitions']=analyze_transitions(ev,focal_team)
+    result['tactical_reasoning']=build_tactical_reasoning(result)
     result['coach_story']=coach_story; result['evidence']=evidence
     if outdir:
         outdir.mkdir(parents=True,exist_ok=True)
@@ -102,6 +212,24 @@ def run(path, focal_team:str|None=None, expected_matches:int|None=None, outdir:P
         result['team_coverage'].to_csv(outdir/'team_coverage.csv',index=False)
         schema_report={**input_meta,'resolved_team':focal_team,'team_resolution':team_resolution,'expected_matches_validation':expected_matches}
         with open(outdir/'input_profile.json','w',encoding='utf-8') as f: json.dump(schema_report,f,ensure_ascii=False,indent=2)
+        with open(outdir/'defensive_story.json','w',encoding='utf-8') as f: json.dump(defensive_story,f,ensure_ascii=False,indent=2)
+        open_play_possessions.to_csv(outdir/'defensive_open_play_possessions.csv',index=False)
+        sd_possessions.to_csv(outdir/'smart_defense_possessions.csv',index=False)
+        sd_players.to_csv(outdir/'smart_defense_players.csv',index=False)
+        with open(outdir/'smart_defense_summary.json','w',encoding='utf-8') as f: json.dump(sd_summary,f,ensure_ascii=False,indent=2)
+        corner_sequences.to_csv(outdir/'corner_sequences.csv',index=False)
+        set_piece_sequences.to_csv(outdir/'set_piece_sequences.csv',index=False)
+        with open(outdir/'corner_summary.json','w',encoding='utf-8') as f: json.dump(corner_summary,f,ensure_ascii=False,indent=2)
+        with open(outdir/'set_piece_summary.json','w',encoding='utf-8') as f: json.dump(set_piece_summary,f,ensure_ascii=False,indent=2)
+        # Audit-ready diagnosis: exact denominators and contexts, never conceptual bibliographies.
+        reason=result['tactical_reasoning']
+        payload={k:v for k,v in reason.items() if k not in ('lane_table','defense_table')}
+        with open(outdir/'diagnostico_conectado.json','w',encoding='utf-8') as f:
+            json.dump(payload,f,ensure_ascii=False,indent=2)
+        reason['lane_table'].to_csv(outdir/'diagnostico_carriles.csv',index=False)
+        reason['defense_table'].to_csv(outdir/'diagnostico_escenarios_rivales.csv',index=False)
+        with open(outdir/'offensive_story.json','w',encoding='utf-8') as f:
+            json.dump(coach_story['offensive_story'],f,ensure_ascii=False,indent=2)
         with open(outdir/'coach_story.json','w',encoding='utf-8') as f: json.dump(coach_story,f,ensure_ascii=False,indent=2)
         with open(outdir/'tactical_framework.json','w',encoding='utf-8') as f: json.dump(tactical_framework,f,ensure_ascii=False,indent=2)
         with open(outdir/'evidence.json','w',encoding='utf-8') as f: json.dump(evidence,f,ensure_ascii=False,indent=2)

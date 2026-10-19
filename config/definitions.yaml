@@ -1,0 +1,33 @@
+pitch:
+  x_max: 120
+  y_max: 80
+zones:
+  buildup_x_max: 36
+  vulnerable_x_max: 40
+  final_third_x_min: 80
+  high_press_x_min: 72
+windows:
+  pre_event_n: 5
+  transition_seconds: 5
+  substitution_minutes: 15
+losses:
+  pass_outcomes: [Incomplete, Out, Pass Offside]
+  event_types: [Dispossessed, Miscontrol]
+recoveries:
+  event_types: [Ball Recovery, Interception, Pressure]
+cts:
+  reference: team_match_percentile
+  component_weights:
+    construction: 1.0
+    progression: 1.0
+    attack: 1.0
+    defense: 1.0
+    transition: 1.0
+    adaptation: 1.0
+esi:
+  weights:
+    OC: 0.2
+    HPS: 0.2
+    RPS: 0.2
+    DS: 0.2
+    DER: 0.2

@@ -44,10 +44,10 @@ def interpret_tactical_framework(tf: dict | None) -> dict:
     pa=b.get("pressure_attraction_passes",{}); pr=b.get("pressure_release_success",{}); tm=b.get("third_man_progression_proxy",{}); hs=b.get("halfspace_entries",{})
     if pa.get("count") is not None:
         rr=_pct(pr.get("rate"))
-        text=(f"EFOS detecta {pa.get('count',0)} pases completados bajo presión antes de x=80 como proxy de atracción ('fishing'). "
-              f"En {rr:.1f}% de esos casos" if rr is not None else f"EFOS detecta {pa.get('count',0)} pases de atracción; sin cobertura suficiente para medir la liberación posterior")
+        text=(f"EFOS detecta {pa.get('count',0)} pases completados bajo presión antes de x=80 como acciones bajo presión registradas. "
+              f"En {rr:.1f}% de esos casos" if rr is not None else f"EFOS detecta {pa.get('count',0)} pases bajo presión; sin cobertura suficiente para medir la liberación posterior")
         if rr is not None:
-            text += " la posesión encuentra una liberación progresiva dentro de la ventana secuencial configurada."
+            text += " la posesión encuentra progresión dentro de la ventana secuencial configurada."
         claims.append(_claim("tactical_pressure_attraction",text,{"pressure_attraction":pa,"pressure_release":pr},"SEQUENCE_PROXY","MEDIUM","Proxy secuencial; no prueba intención deliberada de atraer presión.",pa.get("denominator")))
         summary.append(text)
 
@@ -57,8 +57,8 @@ def interpret_tactical_framework(tf: dict | None) -> dict:
     summary.append(text)
 
     ali=o.get("cross_to_danger_zone_proxy",{}); inter=o.get("interval_entries",{})
-    text=(f"En último tercio aparecen {inter.get('per_match',0) or 0:.1f} pases por partido hacia el intervalo central-lateral y "
-          f"{ali.get('per_match',0) or 0:.1f} centros por partido que cumplen la geometría del proxy 'Aliup'.")
+    text=(f"En último tercio aparecen {inter.get('per_match',0) or 0:.1f} pases por partido hacia las zonas interiores definidas y "
+          f"{ali.get('per_match',0) or 0:.1f} centros por partido que cumplen la geometría de destino profundo configurada.")
     claims.append(_claim("tactical_offensive_microconcepts",text,{"interval_entries":inter,"cross_to_danger_zone_proxy":ali},"EVENT_PROXY","MEDIUM" if inter.get("count",0) else "LOW","El proxy Aliup no identifica rosca, pierna cambiada ni receptor/segundo palo real; los intervalos son zonas configurables.",(inter.get("denominator") or 0)))
     summary.append(text)
 

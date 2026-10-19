@@ -190,5 +190,13 @@ def render_coach_story_md(story: dict, evidence: dict) -> str:
     lines += ["## 13. ¿Qué sistema parece estar construyendo?","",s["conclusion"],""]
     lines += ["## 14. Límites metodológicos",""]
     for x in s["limitations"]: lines.append(f"- {x}")
-    lines += ["","## 15. Registro de evidencia","",f"Este reporte contiene **{len(evidence.get('claims',[]))} claims auditables** en `evidence.json`. Cada claim incluye evidencia, fuente, tamaño de muestra, confianza y limitación.",""]
+    lines += ["","## 15. Registro de evidencia","",f"Este reporte contiene **{len(evidence.get('claims',[]))} claims auditables** en `evidence.json`. Cada afirmación conserva datos observados, tamaño de muestra, confianza y limitaciones.",""]
+    contexts={}
+    for claim in s.get('tactical_framework',{}).get('claims',[]):
+        c=claim.get('conceptual_context')
+        if c: contexts[c['title']]=c
+    if contexts:
+        lines += ['', '## 16. Lectura conceptual y preguntas para el cuerpo técnico', '', 'Estas explicaciones no agregan mediciones ni validan intenciones tácticas.', '']
+        for c in contexts.values():
+            lines += ['### '+c['title'], '', c['reading'], '', 'Otra explicación posible: '+c['alternative'], '', 'Qué revisar: '+c['question'], '', 'Límite: '+c['limit'], '']
     return "\n".join(lines)

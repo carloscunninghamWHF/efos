@@ -410,12 +410,12 @@ def build_coach_story_pdf(result: dict, output_path: Path | str | None = None) -
     offensive = tf.get("offensive_microconcepts", {}) or {}
     value = tf.get("value_purpose", {}) or {}
     metrics = [
-        ("Atracción de presión", _per_match(_nested(build,"pressure_attraction_passes","per_match")), "Fishing proxy EVENT"),
+        ("Pases completos bajo presión", _per_match(_nested(build,"pressure_attraction_passes","per_match")), "Fishing proxy EVENT"),
         ("Liberación posterior", _pct(_nested(build,"pressure_release_success","rate")), "progresión tras presión"),
         ("Half-space", _per_match(_nested(build,"halfspace_entries","per_match")), "entradas por partido"),
-        ("Tercer hombre", _per_match(_nested(build,"third_man_progression_proxy","per_match")), "proxy A->B->C"),
+        ("Combinaciones A→B→C", _per_match(_nested(build,"third_man_progression_proxy","per_match")), "proxy A->B->C"),
         ("Intervalo", _per_match(_nested(offensive,"interval_entries","per_match")), "central-lateral"),
-        ("Centros zona peligrosa", _per_match(_nested(offensive,"cross_to_danger_zone_proxy","per_match")), "proxy Aliup"),
+        ("Centros zona peligrosa", _per_match(_nested(offensive,"cross_to_danger_zone_proxy","per_match")), "destino profundo configurado"),
     ]
     cw=(CONTENT_W-5*mm)/3
     for row in [metrics[:3],metrics[3:]]:

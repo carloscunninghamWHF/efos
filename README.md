@@ -1,3 +1,79 @@
+# EFOS v0.4.31 — Persistencia Supabase (actualización de infraestructura)
+
+**Primero lee [`EFOS_V0431_PERSISTENCIA_SUPABASE.md`](EFOS_V0431_PERSISTENCIA_SUPABASE.md)** para vincular Supabase Auth, preparar snapshots tácticos desde el Mac y desplegar esta versión en una rama de GitHub. La versión antigua en `main` no debe sobreescribir el código actualizado. Los CSV originales se conservan en Supabase Storage y no se incluyen en este paquete de código.
+
+---
+
+# EFOS v0.4.31 — navegación fija y Supabase
+
+**NUEVO:** ver [`EFOS_V0431_SUPABASE_Y_NAVEGACION.md`](EFOS_V0431_SUPABASE_Y_NAVEGACION.md) para configurar Supabase Auth, vista del catálogo, acceso RLS y Storage privado. No se utilizan claves administrativas en Streamlit.
+
+# EFOS v0.4.30 — Inteligencia táctica esencial
+
+Seis secciones principales, filtro global rival/partido, diagnóstico editorial verificable, acceso oscuro y PDF de la muestra activa. **Consulta [EFOS_V0430_INTELIGENCIA_TACTICA_ESENCIAL.md](EFOS_V0430_INTELIGENCIA_TACTICA_ESENCIAL.md) para cambios, limitaciones y pruebas.**
+
+# Parche v0.4.29 · Lectura del Perfil por fase
+
+Descripción para el cuerpo técnico de la temporada, de cada partido y de cada selección (formación, rival, marcador). Ver `EFOS_V0429_LECTURA_PERFIL.md`.
+
+# Parche v0.4.28 · Perfil por fase
+
+Tabla de 24 métricas StatsBomb (ofensiva, organizativa, defensiva) frente a la media de sus rivales, filtrable por formación, rival y marcador. Ver `EFOS_V0428_PERFIL_POR_FASE.md`.
+
+# Parche v0.4.27 · Lectura de temporada para el cuerpo técnico
+
+Bajo el radar y bajo las gráficas del marcador en «Modelo de Juego y DT»: qué pasó, por qué importa y qué decidir, calculado con los datos de la temporada. Ver `EFOS_V0427_LECTURA_TEMPORADA.md`.
+
+# Parche v0.4.26 · Modelo de Juego y DT por formación
+
+Partidos por formación, radar CTS (temporada vs formación/partido) y reacción al marcador filtrada por formación, rival y estado. Ver `EFOS_V0426_MODELO_JUEGO_POR_FORMACION.md`.
+
+# Parche v0.4.25 · «Cómo ataca» y «Cómo defiende» por preguntas
+
+Los módulos «Cómo ataca» y «Cómo defiende» se navegan con cinco botones cada uno; cada pregunta muestra su respuesta, mapas y evidencia. Ver `EFOS_V0425_PREGUNTAS_ATAQUE_DEFENSA.md`.
+
+# EFOS v0.4.24 — Diagnóstico Táctico Conectado
+
+Esta versión conecta las evidencias de ataque, defensa y pérdidas verificadas para construir una identidad de juego, un diagnóstico por pregunta futbolística, gráficos con contexto y preguntas de decisión para el entrenador. El razonamiento solo utiliza resultados calculados a partir de la muestra cargada de StatsBomb: no atribuye intenciones ni calcula posiciones no observadas. Las referencias conceptuales externas no aparecen en la interfaz ni en los informes.
+
+**Iniciar:** desde la carpeta `efos`, ejecutar `python3 -m streamlit run visualization/efos_dashboard.py`; entrar, cargar el CSV nativo, elegir equipo y partidos, y abrir «Informe Ejecutivo». Consulta [`EFOS_V0424_DIAGNOSTICO_CONECTADO.md`](EFOS_V0424_DIAGNOSTICO_CONECTADO.md) para las definiciones, cambios, cobertura y pruebas.
+
+---
+
+# Parche v0.4.22 · Importación StatsBomb automática
+
+**Corregida la carga de CSV de StatsBomb:** ya no es necesario mapear las 254 columnas manualmente. Se seleccionan equipo y partidos y se abre el pipeline EFOS completo; los datos auxiliares de remates y alineaciones quedan trazables sin inventar StatsBomb 360. Ver `EFOS_IMPORTACION_STATSBOMB_AUTOMATICA.md` para instrucciones y limitaciones.
+
+# EFOS v0.4.22 — Storytelling táctico conectado
+
+La mejora editorial integra secuencias verificables en Informe Ejecutivo, armado de juego y conexiones principales en Ataque, análisis explicativo por situación y filtros equipo base → rival → partido en Defensa, y animación opcional basada en fotografías StatsBomb 360. **Revisa alcance y límites en `EFOS_V0422_STORYTELLING_TACTICO.md`.**
+
+# EFOS v0.4.20 — Informe Ejecutivo narrativo e identidad integrada
+
+Ver `EFOS_V0420_EXECUTIVE_EDITORIAL.md`. El Informe Ejecutivo y Modelo de Juego ahora comparten los capítulos con balón, sin balón y tras pérdida, con evidencia, cobertura y enlaces a los módulos. No cambian los motores de datos ni el módulo editorial ofensivo v0.4.19.
+
+# Actualización v0.4.18 — Capa conceptual
+
+Textos contextuales y preguntas tácticas en ataque, defensa y Coach Story. Ver `CAPA_CONCEPTUAL_V0418.md`.
+
+# Actualización v0.4.17 — Ataque premium
+
+Módulo integrado: ocho gráficas con datos reales, filtros, hallazgos y evidencia por secuencia. Instrucciones y metodología: `ATAQUE_PREMIUM_V0417.md`. Vista real autónoma: `docs/ataque_atlas_real.html`.
+
+# Actualización v0.4.15 · Recuperación y vulnerabilidad
+
+Sin balón incorpora contrapresión etiquetada, primer control posterior confirmado, entradas rivales al último tercio y patrones auditables. Consulta `DEFENSA_RECUPERACION_V0415.md`.
+
+# Actualización v0.4.14 · Defensa explicada y conectada
+
+La sección **Sin balón** incorpora tres pasos: entender situaciones, conectar tiempo/jugadores/jugadas y análisis integral. Consulta `DEFENSA_CONECTADA_V0414.md` para el alcance de filtros y validación.
+
+# EFOS v0.4.10 — Premium Set Piece Story
+
+**Nueva pestaña de Balón Parado:** narrativa orientada al entrenador, mapas comparativos izquierda/derecha, patrón más repetido vs mayor xG cubierto, secuencias observadas, vista espacial 3D ilustrativa opcional y evidencia P0→P1→P2 plegable. La información completa está en [`EFOS_V0410_PREMIUM_SET_PIECE_STORY.md`](EFOS_V0410_PREMIUM_SET_PIECE_STORY.md).
+
+**La vista 3D no es tracking ni una curva de vuelo medida.**
+
 # EFOS v0.4.8 — Explorador de acciones sobre el campo
 
 Alineaciones por dibujo en «Modelo de Juego y DT»; en Ataque, Defensa y Transiciones, un campo mplsoccer por
@@ -253,3 +329,15 @@ python -m streamlit run visualization/efos_dashboard.py
 ```
 
 La navegación se movió a la cabecera y prioriza lenguaje de entrenador: Resumen, Identidad, Presión, Con balón, Sin balón, Momentos clave, Jugadores, Evidencia y Método. La barra lateral ya no se utiliza.
+
+
+## v0.4.13 — Atlas narrativo de defensa sin balón
+
+Integración del prototipo Smart Defensive v0.4.13 del usuario: tres situaciones de **juego abierto**, atlas comparativo y secuencias observadas. Reutiliza los eventos normalizados y conserva v0.4.12 para defensa ante balón parado. Consulta `DEFENSIVE_OPEN_PLAY_ATLAS_V0413.md`.
+
+`python -m streamlit run visualization/efos_dashboard.py`
+
+
+## EFOS v0.4.19 — Ataque Organizado y Coach Story editorial
+
+La lectura principal sigue la cadena **inicio → conexión → progresión → resultado**, sobre secuencias verificables. Los filtros de partido utilizan rival y ordinal interno (no jornada inferida); las tablas y los atlas originales se conservan en análisis avanzado. El mismo motor de historia aporta evidencia al Coach Story y al informe técnico. Ver `EFOS_V0419_EDITORIAL_ATTACK_STORY.md` para metodología y límites.

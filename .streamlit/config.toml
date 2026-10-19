@@ -8,3 +8,6 @@ font = "sans serif"
 
 [server]
 maxUploadSize = 500
+
+EFOS_SUPABASE_URL = "https://uvcqmxjjajgensjdidso.supabase.co"
+EFOS_SUPABASE_ANON_KEY = "sb_publishable_zjTeLgifvCOD6BhasAZovg_dMzFaey3"

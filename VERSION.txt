@@ -1,1 +1,1 @@
-v0.4.8.5_editorial_glass_ux
+EFOS v0.4.31-persistent — Navegacion fija + Supabase Auth/RLS ready

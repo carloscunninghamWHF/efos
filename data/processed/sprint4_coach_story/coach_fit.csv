@@ -1,5 +1,0 @@
-clave,nombre,resumen,ejemplos,encaje,brecha_posesion,brecha_presion_alta,brecha_contrapresion,brecha_juego_directo
-dominio_posesion,Dominio con balón,"Quiere el balón, lo mueve con paciencia y presiona arriba para recuperarlo pronto.","Pep Guardiola, Mikel Arteta",92.73622981672199,-3.161248981889912,-7.125394542303987,-4.27597630637257,14.492460902545602
-equilibrio,Equilibrio y bloque medio,Se adapta al rival: ni domina ni renuncia al balón; prioriza el orden y la gestión del partido.,"Carlo Ancelotti, Didier Deschamps",86.01377018327801,26.838751018110088,12.874605457696013,10.72402369362743,-5.507539097454398
-presion_transicion,Presión intensa y transición,"Presiona muy arriba, recupera y ataca rápido y en vertical antes de que el rival se ordene.","Jürgen Klopp, Marcelo Bielsa",81.56308475893974,16.838751018110088,-17.125394542303987,-19.27597630637257,-20.507539097454398
-bloque_bajo,Bloque bajo y contragolpe,"Cede el balón, defiende cerca de su área y golpea al espacio con pocos pases.","Diego Simeone, José Mourinho",64.76377018327801,51.83875101811009,37.87460545769601,25.72402369362743,-25.507539097454398
