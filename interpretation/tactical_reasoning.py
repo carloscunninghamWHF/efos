@@ -8,6 +8,7 @@ The user-facing payload deliberately contains no external conceptual bibliograph
 from __future__ import annotations
 
 import pandas as pd
+from interpretation.claim_contract import build_reasoning_claim
 from intelligence.defensive_open_play import STATES
 
 
@@ -257,7 +258,9 @@ def build_tactical_reasoning(result: dict) -> dict:
             priority='Relacionar los corredores de origen con los desenlaces por rival y partido.'
         else:
             priority='Contrastar los escenarios defensivos con ejemplos de posesiones observadas.'
+    claims = [build_reasoning_claim(result, f) for f in findings]
     return {'schema':'EFOS_REASONING_0424','identity':identity,'priority':priority,
+            'claims_v1':claims,
             'findings':findings,'coverage':len(usable),
             'lane_table':lanes,'defense_table':scenarios,
             'rule':'Observación → contexto → patrón → interpretación → alternativa → pregunta táctica.',
