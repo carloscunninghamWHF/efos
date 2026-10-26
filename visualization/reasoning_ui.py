@@ -14,11 +14,14 @@ def _reading(item, prefix):
         if claim:
             st.caption(f"Evidencia {claim['evidence_level']} · {claim['sample']['n_matches']} partidos · {claim['claim_id']}")
         st.markdown(f"**{item['question']}**")
-        st.write(item['observation'])
-        st.markdown('**Qué revela en esta muestra**')
-        st.write(item['interpretation'])
-        st.markdown('**Qué debe revisar el cuerpo técnico**')
-        st.write(item['action'])
+        if claim and claim['evidence_level'] == 'E0':
+            st.info('No evaluable: faltan datos o trazabilidad suficiente para interpretar este hallazgo.')
+        else:
+            st.write(item['observation'])
+            st.markdown('**Qué revela en esta muestra**')
+            st.write(item['interpretation'])
+            st.markdown('**Qué debe revisar el cuerpo técnico**')
+            st.write(item['action'])
         with st.expander('Comprobar evidencia y otras explicaciones'):
             st.caption('Muestra: '+item['scope'])
             st.write('Contexto: '+item['context'])
