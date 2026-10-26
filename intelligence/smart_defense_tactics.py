@@ -94,9 +94,9 @@ def _scenario(opp:pd.DataFrame, config:DefensiveConfig) -> tuple[str,str]:
 
 def _zone(x):
     if not math.isfinite(x):return "Sin ubicación"
-    if x < 40:return "Tercio propio de América"
+    if x < 40:return "Tercio defensivo del equipo analizado"
     if x < 80:return "Tercio medio"
-    return "Campo rival de América"
+    return "Tercio ofensivo del equipo analizado"
 
 
 def build_smart_defense(events:pd.DataFrame, team:str, config:DefensiveConfig|None=None):
