@@ -10,6 +10,9 @@ COLORS={'Izquierda':'#6A88A8','Centro':'#C89B3C','Derecha':'#1C3957'}
 
 def _reading(item, prefix):
     with st.container(border=True):
+        claim = item.get('claim_v1') or {}
+        if claim:
+            st.caption(f"Evidencia {claim['evidence_level']} · {claim['sample']['n_matches']} partidos · {claim['claim_id']}")
         st.markdown(f"**{item['question']}**")
         st.write(item['observation'])
         st.markdown('**Qué revela en esta muestra**')
@@ -41,6 +44,10 @@ def find_reading(result:dict, ident:str):
 def render_answer(result:dict, ident:str, key:str):
     """Answer card for one question of a module (v0.4.25 question navigation)."""
     item=find_reading(result,ident)
+    if item is not None:
+        claims = _analysis(result).get('claims_v1', [])
+        matched = next((c for c in claims if c['claim_id'] and c['question'] == item['question']), None)
+        item = dict(item, claim_v1=matched)
     if item is None:
         st.caption('El diagnóstico conectado no tiene una muestra evaluable para esta pregunta; '
                    'el contenido inferior describe sólo lo observado.')
